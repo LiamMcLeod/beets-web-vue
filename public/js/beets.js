@@ -220,10 +220,9 @@ $.fn.disableSelection = function () {
  * TODO to do
  **/
 $(function () {
-   
 
     // Disable selection on UI elements.
-    $('#entities ul').disableSelection();
+    $('#library').disableSelection();
     $('#header').disableSelection();
 
     //! Audio player setup.

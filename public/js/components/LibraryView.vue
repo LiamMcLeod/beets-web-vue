@@ -1,19 +1,8 @@
 <style>
 </style>
 <template>
-  <!-- <span> Hello World! </span> -->
   <tbody>
-    <span>
-      <music-item 
-        v-if="hasItems" 
-        v-for="(item,index) in libraryItems" 
-        :item="item" 
-        @click="selectItem(event)"></music-item>
-    </span>  
-      
-      <!-- @click -->
-      <!-- @dblclick="" -->
-      <!-- @keyup.enter="" -->
+    <tr v-if="hasItems" v-for="(item,index) in libraryItems" @click="selectItem(event)" is="music-item" :item=item></tr>
   </tbody>
 </template>
 <script>
@@ -69,7 +58,7 @@ export default {
       }
     },
     playItem: function(e) {
-
+      alert("Double Click");
     }
   }
 };
