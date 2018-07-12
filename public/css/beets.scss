@@ -1,0 +1,292 @@
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #fff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #666;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    background-color: #fafafa;
+}
+
+header {
+    height: 50px;
+    color: white;
+}
+
+a.navbar-brand.mr-2 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 20px 0 0 1.35em;
+}
+
+a.navbar-brand.mr-2:hover {
+    text-decoration: none;
+}
+
+.tab.tab-block {
+    color: #5755d9;
+}
+
+.tab.tab-block .active {
+    background-color: #5755d9;
+}
+
+.tab .tab-item a.active {
+    color: #fff;
+}
+
+#entities {
+    /* background: #fff; */
+    /* shadowy border */
+    /* box-shadow: 0 0 20px #666;
+    -webkit-box-shadow: 0 0 20px #666;
+    -moz-box-shadow: 0 0 20px #666; */
+}
+
+#queryForm {
+/* display: block; */
+/* text-align: center; */
+/* margin: 0.25em 0; */
+}
+
+#query {
+    width: 91%;
+    height: 24px;
+}
+
+#search-view {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+#entities tbody {
+ 
+}
+
+#entities tbody tr {
+    list-style: none;
+    padding: 4px 8px;
+    margin: 0;
+    cursor: default;
+}
+
+#entities tbody tr.selected {
+    color: #5755d9;
+}
+
+#entities tbody tr .playing {
+    margin-left: 5px;
+    font-size: 0.9em;
+}
+
+#main-detail,
+#extra-detail {
+    /* position: fixed;
+    left: 17em; */
+    margin: 1.0em 0 0 1.5em;
+}
+
+#main-detail {
+    /* top: 36px;
+    height: 98px; */
+}
+
+#main-detail .artist,
+#main-detail .album,
+#main-detail .title {
+    display: block;
+    text-align: center;
+}
+
+#main-detail .title {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#main-detail .albumtitle {
+    font-style: italic;
+}
+
+#extra-detail {
+    /* overflow-x: hidden;
+    overflow-y: auto;
+    top: 134px;
+    bottom: 0;
+    right: 0; */
+}
+
+/*Fix for correctly displaying line breaks in lyrics*/
+
+#extra-detail .lyrics {
+    white-space: pre-wrap;
+}
+
+#extra-detail dl dt,
+#extra-detail dl dd {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#extra-detail dl dt {
+    width: 10em;
+    float: left;
+    text-align: right;
+    font-weight: bold;
+    clear: both;
+}
+
+ƒƒ #extra-detail dl dd {
+    margin-left: 10.5em;
+}
+
+#player {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: #fff;
+    z-index: 99;
+    /* shadowy border */
+    box-shadow: 0 -0px 10px #999;
+    -webkit-box-shadow: 0 -0px 20px #999;
+    -moz-box-shadow: 0 -0px 20px #999;
+}
+
+#player .play,
+#player .pause,
+#player .disabled {
+    -webkit-appearance: none;
+    font-size: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    background: none;
+    border: none;
+    color: white;
+    /* padding: 5px; */
+    margin: 0;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+}
+
+#player .disabled {
+    color: #666;
+}
+
+/* Times */
+
+#times {
+    width: 50px;
+}
+
+/** Volume Slider **/
+
+#volumeSlider {
+    width: 100%;
+}
+
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+
+.no-decoration {
+    text-decoration: none;
+}
+
+.no-decoration a:hover {
+    text-decoration: none;
+}
+
+.align-center {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.m-top-15 {
+    margin-top: 15px;
+}
+
+.m-top-10 {
+    margin-top: 10px;
+}
+.p-top-15 {
+    padding-top: 15px;
+}
+.more-button {
+    margin-top: -10px;
+    height: 20px;
+    width:  20px;
+}
+
+.more-button i {
+    margin-top: -5px;
+}
+
+#more-panel {
+    height: 0; 
+    position: fixed; 
+    z-index: 1;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    background-color: #fff; 
+    overflow-x: hidden; 
+    overflow-y: hidden; 
+    padding-top: 60px;
+    transition: 0.5s; 
+}
+
+
+#more-panel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+#more-panel a:hover {
+    /* color: #575757; */
+    color: #f1f1f1;
+}
+
+#more-panel .close-more-button {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Keep at bottom */
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,5 @@
+.vscode
+gulp*
+node_modules/*
+__pycache__/*
+package*
