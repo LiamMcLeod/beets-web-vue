@@ -18,6 +18,7 @@
      <td>
          <!-- {{ album }} -->
      </td>
+      <button @click="test($event)" class="info btn btn-primary"> Hello World </button>
    </span>
  </template>
  <script>
@@ -36,6 +37,10 @@ export default {
   },
 
   mounted: function() {},
-  methods: {}
+  methods: {
+      test: function(e){
+      alert("Hello World! "+e);
+    },
+  }
 };
 </script>

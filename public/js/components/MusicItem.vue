@@ -1,5 +1,5 @@
  <style>
- </style>
+</style>
  <template>
    <tr>
      <td>
@@ -10,7 +10,8 @@
          {{ item.title }}
      </td>
      <td>
-         <button class="info btn btn-primary hidden"> Info </button>
+       <!--  todo re-add hidden -->
+         <button  @dblclick="testDbl($event)" @click="test($event)" class="info btn btn-primary"> Info </button>
      </td>
      <td>
          {{ item.artist }}
@@ -32,10 +33,14 @@ export default {
     }
   },
   data: function() {
-    return {};
+    return {
+    };
   },
-
   mounted: function() {},
-  methods: {}
+  methods: {
+    test: function(e) {
+      
+    },
+  }
 };
 </script>
