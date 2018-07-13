@@ -46,7 +46,7 @@ export default {
       alert(e);
     },
     toggleModalView: function(e) {
-      this.$root.toggleMainDetailView(e)
+      this.$root.toggleMainDetailView(e, this.item.id);
     }
   }
 };

@@ -106,26 +106,6 @@ export default {
       //TODO Build the template here
       // this.nowPlaying(item);
     },
-    toggleMainDetailView: function(e) {
-      if (e) {
-        e.preventDefault();
-        var modal = $("#main-detail-modal");
-        if (e.currentTarget.id == "playing-tab") {
-          if (modal.hasClass("active")) {
-            modal.removeClass("active");
-          } else {
-            modal.addClass("active");
-          }
-        }
-      } else {
-        var modal = $("#main-detail-modal");
-        if (modal.hasClass("active")) {
-          modal.removeClass("active");
-        } else {
-          modal.addClass("active");
-        }
-      }
-    },
     getActualIndex: function(e) {
       var index = $(e.srcElement.parentElement).find(".libraryIndex");
       // console.log(index[0].innerHTML);

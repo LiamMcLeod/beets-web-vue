@@ -36,9 +36,14 @@ export default {
   data: function() {
     return {};
   },
-
+  created: function() {
+    this.getById();
+  },
   mounted: function() {},
   methods: {
+    render: function() {
+      alert("Hello World! " + e);
+    },
     test: function(e) {
       alert("Hello World! " + e);
     },
@@ -46,6 +51,10 @@ export default {
       this.$http.get("/api/" + this.itemId).then(function(res) {
         console.log(res.data);
       });
+    },
+    close: function() {
+      //todo fix playback stops when modal is closed
+      // this.$root.toggleMainDetailView();
     }
   }
 };
@@ -69,54 +78,55 @@ export default {
 // </div>
 
 // Extra Detail Component
-  // <script type="text/template" id="item-extra-detail-template">
-  //       <!-- TODO make this look better -->
-  //       <dl>
-  //           <dt>Track:</dt>
-  //           <dd>
-  //               <%= track %>/
-  //                   <%= tracktotal %>
-  //           </dd>
-  //           <% if (disc) { %>
-  //               <dt>Disc:</dt>
-  //               <dd>
-  //                   <%= disc %>/
-  //                       <%= disctotal %>
-  //               </dd>
-  //               <% } %>
-  //                   <dt>Length:</dt>
-  //                   <dd>
-  //                       <%= timeFormat(length) %>
-  //                   </dd>
-  //                   <dt>Format:</dt>
-  //                   <dd>
-  //                       <%= format %>
-  //                   </dd>
-  //                   <dt>Bitrate:</dt>
-  //                   <dd>
-  //                       <%= Math.round(bitrate/1000) %> kbps</dd>
-  //                   <% if (mb_trackid) { %>
-  //                       <dt>MusicBrainz entry:</dt>
-  //                       <dd>
-  //                           <a target="_blank" href="http://musicbrainz.org/recording/<%= mb_trackid %>">view</a>
-  //                       </dd>
-  //                       <% } %>
-  //                           <dt>File:</dt>
-  //                           <dd>
-  //                               <a target="_blank" class="download" href="../api/<%= id %>/file">download</a>
-  //                           </dd>
-  //                           <% if (lyrics) { %>
-  //                               <dt>Lyrics:</dt>
-  //                               <dd class="lyrics">
-  //                                   <%= lyrics %>
-  //                               </dd>
-  //                               <% } %>
-  //                                   <% if (comments) { %>
-  //                                       <dt>Comments:</dt>
-  //                                       <dd>
-  //                                           <%= comments %>
-  //                                       </dd>
-  //                                       <% } %>
-  //       </dl>
-  //   </script>
+// <script type="text/template" id="item-extra-detail-template">
+//       <!-- TODO make this look better -->
+//       <dl>
+//           <dt>Track:</dt>
+//           <dd>
+//               <%= track %>/
+//                   <%= tracktotal %>
+//           </dd>
+//           <% if (disc) { %>
+//               <dt>Disc:</dt>
+//               <dd>
+//                   <%= disc %>/
+//                       <%= disctotal %>
+//               </dd>
+//               <% } %>
+//                   <dt>Length:</dt>
+//                   <dd>
+//                       <%= timeFormat(length) %>
+//                   </dd>
+//                   <dt>Format:</dt>
+//                   <dd>
+//                       <%= format %>
+//                   </dd>
+//                   <dt>Bitrate:</dt>
+//                   <dd>
+//                       <%= Math.round(bitrate/1000) %> kbps</dd>
+//                   <% if (mb_trackid) { %>
+//                       <dt>MusicBrainz entry:</dt>
+//                       <dd>
+//                           <a target="_blank" href="http://musicbrainz.org/recording/<%= mb_trackid %>">view</a>
+//                       </dd>
+//                       <% } %>
+//                           <dt>File:</dt>
+//                           <dd>
+//                               <a target="_blank" class="download" href="../api/<%= id %>/file">download</a>
+//                           </dd>
+//                           <% if (lyrics) { %>
+//                               <dt>Lyrics:</dt>
+//                               <dd class="lyrics">
+//                                   <%= lyrics %>
+//                               </dd>
+//                               <% } %>
+//                                   <% if (comments) { %>
+//                                       <dt>Comments:</dt>
+//                                       <dd>
+//                                           <%= comments %>
+//                                       </dd>
+//                                       <% } %>
+//       </dl>
+//
+</script>
 </script>

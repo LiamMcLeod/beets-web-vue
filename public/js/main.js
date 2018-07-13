@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 //? https://vuejs.org/v2/guide/components-registration.html
 // var upperFirst = require('lodash/upperFirst');
 // var camelCase = require('lodash/camelCase');
- 
+
 // const requireComponent = require.context(
 //     // The relative path of the components folder
 //     './components',
@@ -58,13 +58,11 @@ var itemModal = require('./components/ItemModal');
 Vue.component('item-modal', itemModal);
 
 const app = new Vue({
-    routes: [
-        {
-            path: '/',
-            name: 'library',
-            component: this.LibraryView
-          }
-    ],
+    routes: [{
+        path: '/',
+        name: 'library',
+        component: this.LibraryView
+    }],
     el: '#app',
     data: {
         playingItem: {},
@@ -73,8 +71,24 @@ const app = new Vue({
     props: {},
     computed: {},
     filters: {},
-    methods: {},
-    search: function () {},
+    methods: {
+        search: function () {},
+        toggleMainDetailView: function (e, index) {
+            this.$root.$on('item-modal', () => {
+                this.render();
+            });
+            if (e) {
+                e.preventDefault();
+                var modal = $("#main-detail-modal");
+                console.log(modal);
+                if (modal.hasClass("active")) {
+                    modal.removeClass("active");
+                } else {
+                    modal.addClass("active");
+                }
+            }
+        },
+    },
 })
 console.log(app);
 
