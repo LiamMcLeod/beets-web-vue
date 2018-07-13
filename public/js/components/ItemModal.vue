@@ -7,7 +7,19 @@
           <div class="modal-header">
               <a @click="close($event)" href="javascript:void(0)" class="fright no-decoration">&#9932;</a>
               <div id="main-detail" class="modal-title h5">
-                
+                <span class="artist">
+                    {{item.artist }}
+                </span>
+                <span class="album">
+                    <span class="albumtitle">
+                        {{item.album }}
+                    </span>
+                    <span class="year">(
+                        {{ item.year }})</span>
+                </span>
+                <span class="title">
+                    {{ item.title }}
+                </span>
               </div>
           </div>
           <div class="modal-body">
@@ -27,26 +39,32 @@ export default {
   mixins: [],
   props: {
     /** Parsed to the template **/
-    // itemId: {
-    //   type: Object,
-    //   default: null,
-    //   required: true
-    // }
   },
   data: function() {
-    return {};
+    return {
+      item: "",
+      hasItem: false,
+      error: ""
+    };
   },
   created: function() {
     // this.getById();
   },
   mounted: function() {},
   methods: {
-    render: function() {
-      console.log("Render called");
+    render: function(id) {
+      // console.log("Render called");
+      this.itemId = id;
+      this.getById();
     },
     getById: function(e) {
       this.$http.get("/api/" + this.itemId).then(function(res) {
-        console.log(res.data);
+        if (res.data) {
+          this.item = res.data;
+        } else {
+          this.hasItems = 0;
+          this.error = "There was an error with your request";
+        }
       });
     },
     close: function(e) {

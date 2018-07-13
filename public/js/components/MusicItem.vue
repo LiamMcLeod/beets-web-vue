@@ -42,9 +42,6 @@ export default {
   },
   mounted: function() {},
   methods: {
-    test: function(e) {
-      alert(e);
-    },
     toggleModalView: function(e) {
       this.$root.toggleMainDetailView(e, this.item.id);
     }
