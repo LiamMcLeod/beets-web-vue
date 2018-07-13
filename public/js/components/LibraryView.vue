@@ -78,7 +78,6 @@ export default {
         }, this.clickEvent.delay);
       } else {
         clearTimeout(this.clickEvent.timer);
-        // this.result.push("dblclick");
         this.clickEvent.clicks = 0;
       }
     },
@@ -90,11 +89,13 @@ export default {
       this.selectItem(e);
       // console.log(this.libraryItems[index].id);
       var url = "/api/" + this.libraryItems[i].id + "/file";
-      $("#player audio").attr("src", url);
+      var player = $("#player audio");
+      var sliderSeek = $("#seekSlider");
+
+      player.attr("src", url);
+
       //Controls playback
-      $("#player audio")
-        .get(0)
-        .play();
+      player.get(0).play();
 
       this.$root.playingItem = this.libraryItems[i];
       // Set playing item and component

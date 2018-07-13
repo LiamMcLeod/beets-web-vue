@@ -1,3 +1,9 @@
+/**
+ * * Visibility
+ * ? Rethink
+ * ! Important
+ * TODO to do
+ **/
 // Format times as minutes and seconds.
 var timeFormat = function (secs) {
     if (secs == undefined || isNaN(secs)) {
@@ -51,14 +57,22 @@ $.fn.player = function (debug) {
     var sliderPlayedEl = $('.slider .played', this);
     var sliderLoadedEl = $('.slider .loaded', this);
 
-    //Volume Slider
+    //* Volume Slider
     var sliderVolume = player.querySelector('#volumeSlider')
     sliderVolume.addEventListener('change', volumeChange, false);
 
-    //Seek Slider
+    /** So volume changes
+     * ? maybe consider another event to process the request during
+     */
+    function volumeChange() {
+        audio.volume = sliderVolume.value;
+    }
+
+    //*Seek Slider
     var sliderSeek = player.querySelector('#seekSlider')
-    sliderSeek.addEventListener('input', sliderSeeking, false);
-    sliderSeek.addEventListener('change', sliderReleased, false);
+    // console.log(sliderSeek);
+    // var sliderSeekAlt = $('#seekSlider');
+    // console.log(sliderSeekAlt);
 
     // Button events.
     playBtn.click(function () {
@@ -68,20 +82,34 @@ $.fn.player = function (debug) {
         audio.pause();
     });
 
-    // Slider Events
-    function volumeChange() {
-        audio.volume = sliderVolume.value;
+
+
+    //* Seek Slider
+    /** 
+     * set slider to cap at the song end
+     **/
+    function sliderSetMax() {
+        sliderSeek.max = audio.duration;
     }
 
-    function updateSlider() {
+    /**
+     * So slider moves with music
+     */
+    function sliderUpdate() {
         sliderSeek.value = audio.currentTime
     }
 
-    function resetSlider() {
+    /**
+     * Slider resets, for song change ..etc
+     */
+    function sliderReset() {
         sliderSeek.value = 0;
     }
 
-    function sliderSeeking() {
+    /**
+     * User has started seek process but not release
+     */
+    function sliderChange() {
         //Variable to stop instant paly
         audioIsPaused = audio.paused;
         // Pause while it evaluates the times
@@ -90,21 +118,19 @@ $.fn.player = function (debug) {
         audio.currentTime = sliderSeek.value
     }
 
-    // TODOS
-    // Maybe Migrate to Vue
-    // Fix seeker
-    // Now playing range bar too quick
-    //? References
-    // https://www.w3schools.com/tags/ref_eventattributes.asp
-    // https://www.w3schools.com/tags/ref_av_dom.asp
-    // https://www.w3schools.com/html/html5_audio.asp
-
+    /**
+     * Released, make the change
+     */
     function sliderReleased() {
         // Start playing again based on if it was already playing
         if (!audioIsPaused) {
             audio.play();
         }
     }
+
+    // TODOS
+    // Fix seeker
+    // Audio range bar too quick
 
     // Utilities.
     var timePercent = function (cur, total) {
@@ -163,7 +189,7 @@ $.fn.player = function (debug) {
     showState();
     showTimes();
 
-    // Bind events.
+
     $('audio', this).bind({
         playing: function () {
             dbg('playing');
@@ -176,7 +202,6 @@ $.fn.player = function (debug) {
         ended: function () {
             dbg('ended');
             showState();
-            // resetSlider();
         },
         progress: function () {
             dbg('progress ' + audio.buffered);
@@ -184,7 +209,6 @@ $.fn.player = function (debug) {
         timeupdate: function () {
             dbg('timeupdate ' + audio.currentTime);
             showTimes();
-            updateSlider();
         },
         durationchange: function () {
             dbg('durationchange ' + audio.duration);
@@ -200,6 +224,8 @@ $.fn.player = function (debug) {
     });
 }
 
+
+
 // Simple selection disable for jQuery.
 // Cut-and-paste from:
 // http://stackoverflow.com/questions/2700000
@@ -213,22 +239,11 @@ $.fn.disableSelection = function () {
         });
 };
 
-/**
- * * Visibility
- * ? Rethink
- * ! Important
- * TODO to do
- **/
 $(function () {
-
     // Disable selection on UI elements.
     $('#library').disableSelection();
     $('#header').disableSelection();
 
     //! Audio player setup.
     $('#player').player();
-
-
-
 });
-

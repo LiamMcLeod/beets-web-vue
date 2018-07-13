@@ -58,6 +58,9 @@ Vue.component('music-item', musicItem);
 var itemModal = require('./components/ItemModal');
 Vue.component('item-modal', itemModal);
 
+var audioPlayer = require('./components/AudioPlayer');
+Vue.component('audio-player', audioPlayer);
+
 const app = new Vue({
     routes: [{
         path: '/',
@@ -77,13 +80,10 @@ const app = new Vue({
         toggleMainDetailView: function (e, id) {
             if (e) {
                 if (id) {
-                    //* reference https://stackoverflow.com/questions/45097278/how-can-i-call-method-in-other-component-on-vue-js-2/50343039#50343039
-                    //* and https://stackoverflow.com/questions/42990308/vue-js-how-to-call-method-from-another-component
-                    console.log(id);
+                    // console.log(id);
                     // console.log(window.vm);
                     this.$refs.modal.render(id);
                 }
-                
                 e.preventDefault();
                 var modal = $("#main-detail-modal");
                 // console.log(modal);

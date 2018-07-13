@@ -69,44 +69,36 @@
                     <tbody id="library" is="library-view"> </tbody>
                 </table>
             </section>
-            <!-- todo modal -->
+            <section hidden id="search-view">
+                <div id="entities" class="container">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th></th>
+                                <th>Artist</th>
+                                <th>Album</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results">
+    
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- todo finish modal -->
             <item-modal ref="modal"></item-modal>
         </main>
 
         <!-- Search View -->
         <!-- Maybe remove hidden Attr -->
-        <section hidden id="search-view">
-            <div id="entities" class="container">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th></th>
-                            <th>Artist</th>
-                            <th>Album</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results">
-
-                    </tbody>
-                </table>
-            </div>
-        </section>
     </div>
     <!-- End of Main Body Content -->
 
-    <!-- Media Player Fixed to Bottom-->
-    <!-- add top margin of 20px-ish -->
-    <div id="more-panel" class="container">
-        <a href="javascript:void(0)" class="close-more-button" onclick="closeNav()">&times;</a>
-        <div id="more-panel-detail">
-
-        </div>
-    </div>
+    <!-- <audio-player></audio-player> -->
 
     <section id="player" class="container">
-        <!-- &#8963; -->
         <div class="container">
             <button onclick="openNav()" id="moreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
                 <i class="icon icon-arrow-up"></i>
@@ -118,14 +110,13 @@
         <audio></audio>
         <div class="columns">
             <div class="column col-3 text-center">
-                <!-- todo  -->
                 <a href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
+
                 <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
                 <a href="javascript:void(0)" class="btn btn-link" id="btnPause">Pause</a>
-                <!-- todo -->
+
                 <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
             </div>
-
             <div class="column col-6">
                 <span id=seek>
                     <input type="range" value="0" step="any" class="slider" id="seekSlider">
