@@ -61,6 +61,9 @@ Vue.component('item-modal', itemModal);
 var audioPlayer = require('./components/AudioPlayer');
 Vue.component('audio-player', audioPlayer);
 
+var nowPlaying = require('./components/NowPlaying');
+Vue.component('now-playing', nowPlaying);
+
 const app = new Vue({
     routes: [{
         path: '/',
@@ -75,6 +78,18 @@ const app = new Vue({
     props: {},
     computed: {},
     filters: {},
+    mounted: function () {
+        //todo to autoplay on song end
+        // console.log($('audio', this));
+        var audio = $('audio', this);
+        audio.bind({
+            //     'play': _.bind(this.audioPlay, this),
+            //     'pause': _.bind(this.audioPause, this),
+            ended: function () {
+                this.audioEnded()
+            }
+        });
+    },
     methods: {
         search: function () {},
         toggleMainDetailView: function (e, id) {
@@ -94,6 +109,36 @@ const app = new Vue({
                 }
             }
         },
+        toggleNowPlaying: function (e) {
+            if (e) {
+                e.preventDefault();
+                if (!$('#moreButton').hasClass("hidden")) {
+                    $('#more-panel').css({
+                        'height': '100%'
+                    });
+                    $('#moreButton').addClass('hidden');
+                    $('#nomoreButton').removeClass('hidden');
+                } else {
+                    $('#more-panel').css({
+                        'height': '0'
+                    });
+                    $('#moreButton').removeClass('hidden');
+                    $('#nomoreButton').addClass('hidden');
+                }
+            }
+        },
+        audioEnded: function () {
+            var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
+            if (i == -1) {
+                return;
+            }
+            if ((i + 1) >= this.shownItems.size()) {
+                // End of  list.
+                return;
+            }
+            this.$refs.library.playItem(null, i+1);
+
+        }
     },
 })
 console.log(app);

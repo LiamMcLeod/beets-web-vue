@@ -92,7 +92,8 @@ export default {
     return {
       item: "",
       hasItem: false,
-      error: ""
+      error: "",
+      itemId: null
     };
   },
   created: function() {
@@ -119,6 +120,18 @@ export default {
           this.error = "There was an error with your request";
         }
       });
+    },
+    timeFormat: function(secs) {
+      if (secs == undefined || isNaN(secs)) {
+        return "0:00";
+      }
+      secs = Math.round(secs);
+      var mins = "" + Math.floor(secs / 60);
+      secs = "" + secs % 60;
+      if (secs.length < 2) {
+        secs = "0" + secs;
+      }
+      return mins + ":" + secs;
     },
     close: function(e) {
       //todo fix playback stops when modal is closed

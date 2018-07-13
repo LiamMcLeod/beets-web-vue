@@ -23,54 +23,40 @@
 </head>
 
 <body>
-    <div class="container" id="app">
-        <header id="header" class="columns">
-            <div class="column col-2 text-center p-top-15">
-                <a class="navbar-brand mr-2" href="/">Beets</a>
-            </div>
-            <div class="column col-6">
-                <ul class="tab tab-block">
-                    <li class="tab-item">
-                        <!-- Maybe href to a js function -->
-                        <!-- <a href="/" id="library-tab" class="active">Library</a> -->
-                        <a href="javascript:void(0)" id="library-tab" class="active">Library</a>
-                    </li>
-                    <!-- <li class="tab-item">
+    <div id="app">
+        <div class="container">
+            <header id="header" class="columns">
+                <div class="column col-2 text-center p-top-15">
+                    <a class="navbar-brand mr-2" href="/">Beets</a>
+                </div>
+                <div class="column col-6">
+                    <ul class="tab tab-block">
+                        <li class="tab-item">
+                            <!-- Maybe href to a js function -->
+                            <!-- <a href="/" id="library-tab" class="active">Library</a> -->
+                            <a href="javascript:void(0)" id="library-tab" class="active">Library</a>
+                        </li>
+                        <!-- <li class="tab-item">
                         <a href="javascript:void(0)" id="playing-tab">Playing</a>
                     </li> -->
-                    <li class="tab-item">
-                        <a href="javascript:void(0)" id="search-tab">Search</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="column col-4">
-                <div class="input-group input-inline">
-                    <form id="queryForm">
-                        <input class="form-input" name="search" type="search" id="query" placeholder="Search">
-                    </form>
-                    <button id="searchButton" class="btn btn-primary input-group-btn">Search</button>
+                        <li class="tab-item">
+                            <a href="javascript:void(0)" id="search-tab">Search</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </header>
+                <div class="column col-4">
+                    <div class="input-group input-inline">
+                        <form id="queryForm">
+                            <input class="form-input" name="search" type="search" id="query" placeholder="Search">
+                        </form>
+                        <button id="searchButton" class="btn btn-primary input-group-btn">Search</button>
+                    </div>
+                </div>
+            </header>
 
-        <!-- Library View -->
-        <main>
-            <section id="library-view" class="container">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th></th>
-                            <th>Artist</th>
-                            <th>Album</th>
-                        </tr>
-                    </thead>
-                    <tbody id="library" is="library-view"> </tbody>
-                </table>
-            </section>
-            <section hidden id="search-view">
-                <div id="entities" class="container">
+            <!-- Library View -->
+            <main>
+                <section id="library-view" class="container">
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
@@ -81,65 +67,83 @@
                                 <th>Album</th>
                             </tr>
                         </thead>
-                        <tbody id="results">
-    
-                        </tbody>
+                        <tbody id="library" is="library-view" ref="library"> </tbody>
                     </table>
+                </section>
+                <section hidden id="search-view">
+                    <div id="entities" class="container">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th></th>
+                                    <th>Artist</th>
+                                    <th>Album</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <!-- todo finish modal -->
+                <item-modal ref="modal"></item-modal>
+            </main>
+
+            <!-- Search View -->
+            <!-- Maybe remove hidden Attr -->
+        </div>
+        <now-playing ref="playing"></now-playing>
+        <!-- End of Main Body Content -->
+
+        <!-- <audio-player></audio-player> -->
+
+        <section id="player" class="container">
+            <div class="container">
+                <button @click="toggleNowPlaying($event)" id="moreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
+                    <i class="icon icon-arrow-up"></i>
+                </button>
+                <button @click="toggleNowPlaying($event)" id="nomoreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
+                    <i class="icon icon-arrow-down"></i>
+                </button>
+            </div>
+            <audio></audio>
+            <div class="columns">
+                <div class="column col-3 text-center">
+                    <a href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
+
+                    <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
+                    <a href="javascript:void(0)" class="btn btn-link" id="btnPause">Pause</a>
+
+                    <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
                 </div>
-            </section>
-            <!-- todo finish modal -->
-            <item-modal ref="modal"></item-modal>
-        </main>
+                <div class="column col-6">
+                    <span id=seek>
+                        <input type="range" value="0" step="any" class="slider" id="seekSlider">
+                    </span>
+                </div>
+                <div class="column col-1 text-center">
+                    <span id="times">
+                        <span class="currentTime">
+                        </span>
+                        <span>/</span>
+                        <span class="totalTime">
+                        </span>
+                    </span>
+                </div>
 
-        <!-- Search View -->
-        <!-- Maybe remove hidden Attr -->
+                <div class="column col-2">
+                    <span id=volume>
+                        <input type="range" min="0" max="1" value="1" step=".05" class="slider" id="volumeSlider">
+                    </span>
+                </div>
+            </div>
+        </section>
+
+
     </div>
-    <!-- End of Main Body Content -->
-
-    <!-- <audio-player></audio-player> -->
-
-    <section id="player" class="container">
-        <div class="container">
-            <button onclick="openNav()" id="moreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
-                <i class="icon icon-arrow-up"></i>
-            </button>
-            <button onclick="closeNav()" id="nomoreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
-                <i class="icon icon-arrow-down"></i>
-            </button>
-        </div>
-        <audio></audio>
-        <div class="columns">
-            <div class="column col-3 text-center">
-                <a href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
-
-                <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
-                <a href="javascript:void(0)" class="btn btn-link" id="btnPause">Pause</a>
-
-                <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
-            </div>
-            <div class="column col-6">
-                <span id=seek>
-                    <input type="range" value="0" step="any" class="slider" id="seekSlider">
-                </span>
-            </div>
-            <div class="column col-1 text-center">
-                <span id="times">
-                    <span class="currentTime">
-                    </span>
-                    <span>/</span>
-                    <span class="totalTime">
-                    </span>
-                </span>
-            </div>
-
-            <div class="column col-2">
-                <span id=volume>
-                    <input type="range" min="0" max="1" value="1" step=".05" class="slider" id="volumeSlider">
-                </span>
-            </div>
-        </div>
-    </section>
-
     <script src="{{ url_for('static', filename='app.js') }}"></script>
     <!-- <script src="../public/app.js"></script> -->
 </body>

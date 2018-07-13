@@ -28,14 +28,20 @@ function openNav() {
 }
 
 // Close/hide the botnav
-function closeNav() {
-    $('#more-panel').css({
-        'height': '0'
-    });
-    $('#moreButton').removeClass('hidden');
-    $('#nomoreButton').addClass('hidden');
-}
-
+// function closeNav() {
+//     $('#more-panel').css({
+//         'height': '0'
+//     });
+//     $('#moreButton').removeClass('hidden');
+//     $('#nomoreButton').addClass('hidden');
+// }
+// function openVueNav() {
+//     $('#more-panel').css({
+//         'height': '100%'
+//     });
+//     $('#moreButton').addClass('hidden');
+//     $('#nomoreButton').removeClass('hidden');
+// }
 
 // jQuery extension encapsulating event hookups for audio element controls.
 $.fn.player = function (debug) {
