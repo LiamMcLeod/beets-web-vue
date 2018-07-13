@@ -64,7 +64,8 @@ const app = new Vue({
     ],
     el: '#app',
     data: {
-        searchQuery: ""
+        searchQuery: "",
+        playingItem: {}
     },
     props: {},
     computed: {},

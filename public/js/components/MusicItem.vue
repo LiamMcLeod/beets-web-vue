@@ -10,8 +10,7 @@
          {{ item.title }}
      </td>
      <td>
-       <!--  todo re-add hidden -->
-         <button  @dblclick="testDbl($event)" @click="test($event)" class="info btn btn-primary"> Info </button>
+         <button @dblclick="testDbl($event)" @click="test($event)" class="info btn btn-primary hidden"> Info </button>
      </td>
      <td>
          {{ item.artist }}
@@ -19,6 +18,7 @@
      <td>
          {{ item.album }}
      </td>
+     <td hidden class="libraryIndex">{{index}}</td>
    </tr>
  </template>
  <script>
@@ -30,6 +30,11 @@ export default {
       type: Object,
       default: null,
       required: true
+    },
+    index: {
+      type: Number,
+      default: null,
+      required: true
     }
   },
   data: function() {
@@ -39,7 +44,7 @@ export default {
   mounted: function() {},
   methods: {
     test: function(e) {
-      
+      alert(e);
     },
   }
 };
