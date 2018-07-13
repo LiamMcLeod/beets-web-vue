@@ -5,7 +5,7 @@
       <a @click="close($event)" href="javascript:void(0)" class="modal-overlay" aria-label="Close"></a>
       <div class="modal-container">
           <div class="modal-header">
-              <a @click="close($event)" href="javascript:void(0)" class="text-primary fright no-decoration">&#9932;</a>
+              <a @click="close($event)" href="javascript:void(0)" class="fright no-decoration">&#9932;</a>
               <div id="main-detail" class="modal-title h5">
                 
               </div>
@@ -37,7 +37,7 @@ export default {
     return {};
   },
   created: function() {
-    this.getById();
+    // this.getById();
   },
   mounted: function() {},
   methods: {

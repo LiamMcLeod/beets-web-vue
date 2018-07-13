@@ -6,7 +6,7 @@ require('./underscore.js');
 // window.Vue = require('./vue');
 
 window.Vue = require('vue');
-window.Event = new Vue();
+window.Bus = require('vue');
 var VueResource = require('vue-resource');
 Vue.use(VueResource);
 
@@ -48,7 +48,15 @@ Vue.use(VueRouter);
 //     componentConfig.default || componentConfig
 //   )
 // })
-
+var vm = new Vue({
+    method: {
+        renderModal: function (id) {
+            this.$http.get("/api/" + id).then(function (res) {
+                console.log(res.data);
+            });
+        }
+    }
+});
 var libraryView = require('./components/LibraryView.vue');
 Vue.component('library-view', libraryView);
 
@@ -74,14 +82,13 @@ const app = new Vue({
     filters: {},
     methods: {
         search: function () {},
-        toggleMainDetailView: function (e, index) {
-            if (index) {
+        toggleMainDetailView: function (e, id) {
+            if (id) {
                 //* reference https://stackoverflow.com/questions/45097278/how-can-i-call-method-in-other-component-on-vue-js-2/50343039#50343039
                 //* and https://stackoverflow.com/questions/42990308/vue-js-how-to-call-method-from-another-component
-                this.$root.$on('item-modal', () => {
-                    console.log(this);
-                    this.render();
-                });
+                console.log(id);
+                // console.log(window.vm);
+                // window.vm.renderModal(id);
             }
             if (e) {
                 e.preventDefault();
