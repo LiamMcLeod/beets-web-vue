@@ -2,10 +2,10 @@
 </style>
  <template>
   <div class="modal" id="main-detail-modal">
-      <a href="javascript:void(0)" class="modal-overlay" aria-label="Close"></a>
+      <a @click="close($event)" href="javascript:void(0)" class="modal-overlay" aria-label="Close"></a>
       <div class="modal-container">
           <div class="modal-header">
-              <a href="javascript:void(0)" class="close fright no-decoration">&#9932;</a>
+              <a @click="close($event)" href="javascript:void(0)" class="text-primary fright no-decoration">&#9932;</a>
               <div id="main-detail" class="modal-title h5">
                 
               </div>
@@ -42,19 +42,16 @@ export default {
   mounted: function() {},
   methods: {
     render: function() {
-      alert("Hello World! " + e);
-    },
-    test: function(e) {
-      alert("Hello World! " + e);
+      console.log("Render called");
     },
     getById: function(e) {
       this.$http.get("/api/" + this.itemId).then(function(res) {
         console.log(res.data);
       });
     },
-    close: function() {
+    close: function(e) {
       //todo fix playback stops when modal is closed
-      // this.$root.toggleMainDetailView();
+      this.$root.toggleMainDetailView(e);
     }
   }
 };

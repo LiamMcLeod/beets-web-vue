@@ -6,6 +6,7 @@ require('./underscore.js');
 // window.Vue = require('./vue');
 
 window.Vue = require('vue');
+window.Event = new Vue();
 var VueResource = require('vue-resource');
 Vue.use(VueResource);
 
@@ -74,13 +75,18 @@ const app = new Vue({
     methods: {
         search: function () {},
         toggleMainDetailView: function (e, index) {
-            this.$root.$on('item-modal', () => {
-                this.render();
-            });
+            if (index) {
+                //* reference https://stackoverflow.com/questions/45097278/how-can-i-call-method-in-other-component-on-vue-js-2/50343039#50343039
+                //* and https://stackoverflow.com/questions/42990308/vue-js-how-to-call-method-from-another-component
+                this.$root.$on('item-modal', () => {
+                    console.log(this);
+                    this.render();
+                });
+            }
             if (e) {
                 e.preventDefault();
                 var modal = $("#main-detail-modal");
-                console.log(modal);
+                // console.log(modal);
                 if (modal.hasClass("active")) {
                     modal.removeClass("active");
                 } else {

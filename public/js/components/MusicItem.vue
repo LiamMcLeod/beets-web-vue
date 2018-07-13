@@ -4,7 +4,7 @@
    <tr>
      <td>
         <!-- todo v-if -->
-         <!-- <span class="playing">&#9654;</span> -->
+         <span v-if="$root.playingItem.id==item.id" class="playing">&#9654;</span>
      </td>
      <td>
          {{ item.title }}
