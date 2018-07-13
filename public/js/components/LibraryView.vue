@@ -65,17 +65,18 @@ export default {
     },
     playItem: function(e) {
       var index = this.getActualIndex(e);
+      // console.log(index);
       //? Fallback in case problems present with either index fetching methods
       // var index = this.getIndexByRow(e);
       this.selectItem(e);
-      console.log(index);
-      // console.log(this.libraryItems[index]);
-      // var url = "/api/" + this.libraryItems[index].id + "/file";
-      //$("#player audio").attr("src", url);
-      // Controls playback
-      // $("#player audio")
-      //   .get(0)
-      //   .play();
+      // console.log(this.libraryItems[index].id);
+      var url = "/api/" + this.libraryItems[index].id + "/file";
+      $("#player audio").attr("src", url);
+      //Controls playback
+      $("#player audio").get(0).play();
+
+      vue.playingItem = this.libraryItems[i];
+      // Set playing item and component
       // if (this.playingItem != null) {
       //   this.playingItem.entryView.setPlaying(false);
       // }
