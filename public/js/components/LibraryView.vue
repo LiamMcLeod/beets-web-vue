@@ -64,14 +64,12 @@ export default {
       }
     },
     playItem: function(e) {
-      // alert(e.srcElement.parentElement);
-      // var index = $(e.srcElement.parentElement + " .libraryIndex");
-      // console.log(e.srcElement.parentElement);
-      console.log(index);
+
+      var index = this.getActualIndex(e);
+      //? Fallback in case problems present with either index fetching methods
+      // this.getIndexByRow(e);
       this.selectItem(e);
-
-
-
+      // console.log(index);
       // console.log(this.libraryItems[index]);
       // var url = "/api/" + this.libraryItems[index].id + "/file";
       //$("#player audio").attr("src", url);
@@ -86,6 +84,25 @@ export default {
       // this.playingItem = item;
       //TODO Build the template here
       // this.nowPlaying(item);
+    },
+    getActualIndex: function(e) {
+      $(e.srcElement.parentElement).each(function() {
+        var index = $(this).find(".libraryIndex");
+        // console.log(index[0].innerHTML);
+        index = index[0].innerHTML;
+        // console.log(index);
+        return index;
+      });
+    },
+    getIndexByRow: function(e) {
+      $(e.srcElement.parentElement).each(function() {
+        var index = $(this).find(".libraryIndex");
+        // Could also use innerHtml prop on å[0] for more reliability
+        // console.log(index.context.rowIndex - 1);
+        index = index.context.rowIndex - 1;
+        // console.log(index);
+        return index;
+      });
     }
   }
 };
