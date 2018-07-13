@@ -85,6 +85,7 @@ const app = new Vue({
         audio.bind({
             //     'play': _.bind(this.audioPlay, this),
             //     'pause': _.bind(this.audioPause, this),
+            //! this event is never triggered
             ended: function () {
                 this.audioEnded()
             }
@@ -128,11 +129,12 @@ const app = new Vue({
             }
         },
         audioEnded: function () {
+            alert("Over");
             var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
             if (i == -1) {
                 return;
             }
-            if ((i + 1) >= this.shownItems.size()) {
+            if ((i + 1) >= this.$refs.library.libraryItems.size()) {
                 // End of  list.
                 return;
             }
