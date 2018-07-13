@@ -10,7 +10,7 @@
          {{ item.title }}
      </td>
      <td>
-         <button @dblclick="testDbl($event)" @click="test($event)" class="info btn btn-primary hidden"> Info </button>
+         <button @click="toggleModalView($event)" class="info btn btn-primary hidden"> Info </button>
      </td>
      <td>
          {{ item.artist }}
@@ -38,14 +38,16 @@ export default {
     }
   },
   data: function() {
-    return {
-    };
+    return {};
   },
   mounted: function() {},
   methods: {
     test: function(e) {
       alert(e);
     },
+    toggleModalView: function(e) {
+      this.$root.toggleMainDetailView(e)
+    }
   }
 };
 </script>

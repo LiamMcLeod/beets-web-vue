@@ -51,8 +51,11 @@ Vue.use(VueRouter);
 var libraryView = require('./components/LibraryView.vue');
 Vue.component('library-view', libraryView);
 
-var musicItem = require('./components/musicItem.vue');
+var musicItem = require('./components/MusicItem.vue');
 Vue.component('music-item', musicItem);
+
+var itemModal = require('./components/ItemModal');
+Vue.component('item-modal', itemModal);
 
 const app = new Vue({
     routes: [
@@ -77,3 +80,4 @@ console.log(app);
 
 //* Beets JS
 require('./beets.js');
+// TODO FINISH THE MODAL CODE atm is't this.$root.toggleModal or some shit

@@ -69,25 +69,9 @@
                     <tbody id="library" is="library-view"> </tbody>
                 </table>
             </section>
+            <!-- todo modal -->
+            <!-- <item-modal></item-modal> -->
         </main>
-
-        <!-- Now Playing -->
-        <!-- <section class="popover popover-right active">
-            <div class="popover-container">
-                <div class="card">
-                    <div id="main-detail" class="card-header">
-            
-                    </div>
-                    <div id="extra-detail" class="card-body">
-             
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn">&8690;</button>
-                        <button class="btn btn-primary">Play</button>
-                    </div>
-                </div>
-            </div>
-        </section> -->
 
         <!-- Modal for Extra info -->
         <section>
@@ -166,12 +150,6 @@
                 <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
             </div>
 
-            <!-- 
-                <button class="disabled">&#9654;</button>
-                <button class="play">&#9654;</button>
-                <button class="pause" style="letter-spacing: 1px;">&#10073;&#10073;</button>
-            -->
-
             <div class="column col-6">
                 <span id=seek>
                     <input type="range" value="0" step="any" class="slider" id="seekSlider">
@@ -195,118 +173,6 @@
         </div>
     </section>
 
-    <!-- Templates. -->
-    <!-- Start of a test template -->
-    <script type="text/template" id="now-playing-template">
-        <span class="artist">
-            <%= artist %>
-        </span>
-        <span class="album">
-            <span class="albumtitle">
-                <%= album %>
-            </span>
-            <span class="year">(
-                <%= year %>)</span>
-        </span>
-        <span class="title">
-            <%= title %>
-        </span>
-        <div class="container align-center">
-            <button class="play btn btn-primary m-top-15">Play</button>
-        </div>
-    </script>
-
-    <!-- Search Table Template -->
-    <script type="text/template" id="item-entry-template">
-        <td>
-            <span class="playing">&#9654;</span>
-        </td>
-        <td>
-            <%= title %>
-        </td>
-        <td>
-            <button class="info btn btn-primary hidden"> Info </button>
-        </td>
-        <td>
-            <%= artist %>
-        </td>
-        <td>
-            <%= album %>
-        </td>
-    </script>
-
-    <!-- Main Detail Template -->
-    <script type="text/template" id="item-main-detail-template">
-        <a href="javascript:void(0)" class="close fright no-decoration">&#9932;</a>
-        <span class="artist">
-            <%= artist %>
-        </span>
-        <span class="album">
-            <span class="albumtitle">
-                <%= album %>
-            </span>
-            <span class="year">(
-                <%= year %>)</span>
-        </span>
-        <span class="title">
-            <%= title %>
-        </span>
-        <div class="container align-center">
-            <button class="play btn btn-primary m-top-15">Play</button>
-        </div>
-    </script>
-
-    <!-- Extra Detail Template -->
-    <script type="text/template" id="item-extra-detail-template">
-        <!-- TODO make this look better -->
-        <dl>
-            <dt>Track:</dt>
-            <dd>
-                <%= track %>/
-                    <%= tracktotal %>
-            </dd>
-            <% if (disc) { %>
-                <dt>Disc:</dt>
-                <dd>
-                    <%= disc %>/
-                        <%= disctotal %>
-                </dd>
-                <% } %>
-                    <dt>Length:</dt>
-                    <dd>
-                        <%= timeFormat(length) %>
-                    </dd>
-                    <dt>Format:</dt>
-                    <dd>
-                        <%= format %>
-                    </dd>
-                    <dt>Bitrate:</dt>
-                    <dd>
-                        <%= Math.round(bitrate/1000) %> kbps</dd>
-                    <% if (mb_trackid) { %>
-                        <dt>MusicBrainz entry:</dt>
-                        <dd>
-                            <a target="_blank" href="http://musicbrainz.org/recording/<%= mb_trackid %>">view</a>
-                        </dd>
-                        <% } %>
-                            <dt>File:</dt>
-                            <dd>
-                                <a target="_blank" class="download" href="../api/<%= id %>/file">download</a>
-                            </dd>
-                            <% if (lyrics) { %>
-                                <dt>Lyrics:</dt>
-                                <dd class="lyrics">
-                                    <%= lyrics %>
-                                </dd>
-                                <% } %>
-                                    <% if (comments) { %>
-                                        <dt>Comments:</dt>
-                                        <dd>
-                                            <%= comments %>
-                                        </dd>
-                                        <% } %>
-        </dl>
-    </script>
     <script src="{{ url_for('static', filename='app.js') }}"></script>
     <!-- <script src="../public/app.js"></script> -->
 </body>

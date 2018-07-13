@@ -10,6 +10,11 @@ export default {
   mixins: [],
   props: {
     /** Parsed to the template **/
+    searchTerm: {
+      type: String,
+      default: null,
+      required: false
+    }
   },
   data: function() {
     return {
@@ -24,7 +29,9 @@ export default {
     };
   },
   created: function() {
-    this.fetchItems();
+    if (!this.searchTerm) this.fetchItems();
+    else this.searchItems();
+    //Todo something
   },
   mounted: function() {},
   methods: {
@@ -39,6 +46,18 @@ export default {
           this.hasItems = 0;
           this.error = "There was an error with your request";
         }
+      });
+    },
+    searchItems: function() {
+      this.$http.get("/api/query/" + this.searchTerm).then(function(res) {
+        // if (res.data.items) {
+        //todo finish
+        // this.hasItems = res.data.items.length;
+        // this.libraryItems = res.data.items;
+        // } else {
+        // this.hasItems = 0;
+        // this.error = "There was an error with your request";
+        // }
       });
     },
     selectItem: function(e) {
@@ -64,18 +83,20 @@ export default {
       }
     },
     playItem: function(e) {
-      var index = this.getActualIndex(e);
+      var i = this.getActualIndex(e);
       // console.log(index);
       //? Fallback in case problems present with either index fetching methods
       // var index = this.getIndexByRow(e);
       this.selectItem(e);
       // console.log(this.libraryItems[index].id);
-      var url = "/api/" + this.libraryItems[index].id + "/file";
+      var url = "/api/" + this.libraryItems[i].id + "/file";
       $("#player audio").attr("src", url);
       //Controls playback
-      $("#player audio").get(0).play();
+      $("#player audio")
+        .get(0)
+        .play();
 
-      vue.playingItem = this.libraryItems[i];
+      this.$root.playingItem = this.libraryItems[i];
       // Set playing item and component
       // if (this.playingItem != null) {
       //   this.playingItem.entryView.setPlaying(false);
@@ -84,6 +105,26 @@ export default {
       // this.playingItem = item;
       //TODO Build the template here
       // this.nowPlaying(item);
+    },
+    toggleMainDetailView: function(e) {
+      if (e) {
+        e.preventDefault();
+        var modal = $("#main-detail-modal");
+        if (e.currentTarget.id == "playing-tab") {
+          if (modal.hasClass("active")) {
+            modal.removeClass("active");
+          } else {
+            modal.addClass("active");
+          }
+        }
+      } else {
+        var modal = $("#main-detail-modal");
+        if (modal.hasClass("active")) {
+          modal.removeClass("active");
+        } else {
+          modal.addClass("active");
+        }
+      }
     },
     getActualIndex: function(e) {
       var index = $(e.srcElement.parentElement).find(".libraryIndex");
