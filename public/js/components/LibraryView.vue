@@ -64,12 +64,11 @@ export default {
       }
     },
     playItem: function(e) {
-
       var index = this.getActualIndex(e);
       //? Fallback in case problems present with either index fetching methods
-      // this.getIndexByRow(e);
+      // var index = this.getIndexByRow(e);
       this.selectItem(e);
-      // console.log(index);
+      console.log(index);
       // console.log(this.libraryItems[index]);
       // var url = "/api/" + this.libraryItems[index].id + "/file";
       //$("#player audio").attr("src", url);
@@ -86,23 +85,17 @@ export default {
       // this.nowPlaying(item);
     },
     getActualIndex: function(e) {
-      $(e.srcElement.parentElement).each(function() {
-        var index = $(this).find(".libraryIndex");
-        // console.log(index[0].innerHTML);
-        index = index[0].innerHTML;
-        // console.log(index);
-        return index;
-      });
+      var index = $(e.srcElement.parentElement).find(".libraryIndex");
+      // console.log(index[0].innerHTML);
+      index = index[0].innerHTML;
+      return index;
     },
     getIndexByRow: function(e) {
-      $(e.srcElement.parentElement).each(function() {
-        var index = $(this).find(".libraryIndex");
-        // Could also use innerHtml prop on å[0] for more reliability
-        // console.log(index.context.rowIndex - 1);
-        index = index.context.rowIndex - 1;
-        // console.log(index);
-        return index;
-      });
+      var index = $(e.srcElement.parentElement).find(".libraryIndex");
+      // Could also use innerHtml prop on å[0] for more reliability
+      // console.log(index.context.rowIndex - 1);
+      index = index.context.rowIndex - 1;
+      return index;
     }
   }
 };
