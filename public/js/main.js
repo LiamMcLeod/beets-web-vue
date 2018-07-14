@@ -79,18 +79,6 @@ const app = new Vue({
     computed: {},
     filters: {},
     mounted: function () {
-        //todo to autoplay on song end
-        // console.log($('audio', this));
-        var audio = $('audio', this);
-        console.log(audio);
-        // audio.bind(
-        // //     //     'play': _.bind(this.audioPlay, this),
-        // //     //     'pause': _.bind(this.audioPause, this),
-        // //     //! this event is never triggered
-        //     "onended", function () {
-        //         alert("FUCK!")
-        //         this.audioEnded()
-        // });
         $("#player audio").bind("ended",{app: this}, function (e) {
             //TO DO: Your code goes here...
             app.audioEnded();
@@ -134,12 +122,12 @@ const app = new Vue({
             }
         },
         audioEnded: function () {
-            console.log("ended")
+            // console.log("ended")
             var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
             if (i == -1) {
                 return;
             }
-            console.log(this.$refs.library.libraryItems.length);
+
             // ? -1 Might not be necessary.
             if ((i + 1) >= this.$refs.library.libraryItems.length) {
                 // End of  list.
