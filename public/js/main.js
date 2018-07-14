@@ -82,13 +82,18 @@ const app = new Vue({
         //todo to autoplay on song end
         // console.log($('audio', this));
         var audio = $('audio', this);
-        audio.bind({
-            //     'play': _.bind(this.audioPlay, this),
-            //     'pause': _.bind(this.audioPause, this),
-            //! this event is never triggered
-            ended: function () {
-                this.audioEnded()
-            }
+        console.log(audio);
+        // audio.bind(
+        // //     //     'play': _.bind(this.audioPlay, this),
+        // //     //     'pause': _.bind(this.audioPause, this),
+        // //     //! this event is never triggered
+        //     "onended", function () {
+        //         alert("FUCK!")
+        //         this.audioEnded()
+        // });
+        $("#player audio").bind("ended",{app: this}, function (e) {
+            //TO DO: Your code goes here...
+            app.audioEnded();
         });
     },
     methods: {
@@ -129,16 +134,18 @@ const app = new Vue({
             }
         },
         audioEnded: function () {
-            alert("Over");
+            console.log("ended")
             var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
             if (i == -1) {
                 return;
             }
-            if ((i + 1) >= this.$refs.library.libraryItems.size()) {
+            console.log(this.$refs.library.libraryItems.length);
+            // ? -1 Might not be necessary.
+            if ((i + 1) >= this.$refs.library.libraryItems.length-1) {
                 // End of  list.
                 return;
             }
-            this.$refs.library.playItem(null, i+1);
+            this.$refs.library.playItem(null, i + 1);
 
         }
     },
