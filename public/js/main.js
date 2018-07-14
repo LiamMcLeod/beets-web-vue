@@ -79,7 +79,9 @@ const app = new Vue({
     computed: {},
     filters: {},
     mounted: function () {
-        $("#player audio").bind("ended",{app: this}, function (e) {
+        $("#player audio").bind("ended", {
+            app: this
+        }, function (e) {
             //TO DO: Your code goes here...
             app.audioEnded();
         });
@@ -119,6 +121,24 @@ const app = new Vue({
                 }
             }
         },
+        // libraryTab: function (e) {
+        //     $('#search-tab').removeClass('active');
+        //     $('#library-tab').addClass('active');
+        //     if (!$('#library').hasClass('hidden')) {
+        //         $('#library').addClass('hidden');
+        //     } else {
+        //         $('#library').removeClass('hidden');
+        //     }
+        // },
+        // searchTab: function (e) {
+        //     $('#library-tab').removeClass('active');
+        //     $('#search-tab').addClass('active');
+        //     if (!$('#search').hasClass('hidden')) {
+        //         $('#search').addClass('hidden');
+        //     } else {
+        //         $('#search').removeClass('hidden');
+        //     }
+        // },
         audioEnded: function () {
             // console.log("ended")
             var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
@@ -130,7 +150,6 @@ const app = new Vue({
                 return;
             }
             this.$refs.library.playItem(null, i + 1);
-
         }
     },
 })
