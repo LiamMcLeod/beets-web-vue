@@ -5919,6 +5919,10 @@ a.navbar-brand.mr-2:hover {
   justify-content: center;
 }
 
+.p-top-8 {
+  padding-top: 8px;
+}
+
 .m-top-15 {
   margin-top: 15px;
 }

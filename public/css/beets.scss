@@ -64,9 +64,9 @@ a.navbar-brand.mr-2:hover {
 }
 
 #queryForm {
-/* display: block; */
-/* text-align: center; */
-/* margin: 0.25em 0; */
+    /* display: block; */
+    /* text-align: center; */
+    /* margin: 0.25em 0; */
 }
 
 #query {
@@ -85,7 +85,6 @@ a.navbar-brand.mr-2:hover {
 
 // ? Return to at some point
 // #entities tbody {
- 
 // }
 // #entities tbody tr {
 //     list-style: none;
@@ -93,16 +92,13 @@ a.navbar-brand.mr-2:hover {
 //     margin: 0;
 //     cursor: default;
 // }
-
 // #entities tbody tr.selected {
 //     color: #5755d9;
 // }
-
 // #entities tbody tr .playing {
 //     margin-left: 5px;
 //     font-size: 0.9em;
 // }
-
 #library tr {
     list-style: none;
     padding: 4px 8px;
@@ -249,6 +245,10 @@ a.navbar-brand.mr-2:hover {
     justify-content: center;
 }
 
+.p-top-8 {
+    padding-top: 8px;
+}
+
 .m-top-15 {
     margin-top: 15px;
 }
@@ -256,13 +256,15 @@ a.navbar-brand.mr-2:hover {
 .m-top-10 {
     margin-top: 10px;
 }
+
 .p-top-15 {
     padding-top: 15px;
 }
+
 .more-button {
     margin-top: -10px;
     height: 20px;
-    width:  20px;
+    width: 20px;
 }
 
 .more-button i {
@@ -270,19 +272,18 @@ a.navbar-brand.mr-2:hover {
 }
 
 #more-panel {
-    height: 0; 
-    position: fixed; 
+    height: 0;
+    position: fixed;
     z-index: 1;
-    bottom: 0; 
+    bottom: 0;
     left: 0;
     right: 0;
-    background-color: #fff; 
-    overflow-x: hidden; 
-    overflow-y: hidden; 
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
     padding-top: 60px;
-    transition: 0.5s; 
+    transition: 0.5s;
 }
-
 
 #more-panel a {
     padding: 8px 8px 8px 32px;
@@ -307,6 +308,7 @@ a.navbar-brand.mr-2:hover {
 }
 
 /* Keep at bottom */
+
 .hidden {
     display: none !important;
 }

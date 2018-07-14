@@ -64,12 +64,11 @@ Vue.component('audio-player', audioPlayer);
 var nowPlaying = require('./components/NowPlaying');
 Vue.component('now-playing', nowPlaying);
 
+var parentView = require('./components/ParentView');
+Vue.component('parent-view', parentView);
+
+
 const app = new Vue({
-    routes: [{
-        path: '/',
-        name: 'library',
-        component: this.LibraryView
-    }],
     el: '#app',
     data: {
         playingItem: {},
@@ -79,6 +78,7 @@ const app = new Vue({
     computed: {},
     filters: {},
     mounted: function () {
+        // console.log();
         $("#player audio").bind("ended", {
             app: this
         }, function (e) {
@@ -87,22 +87,6 @@ const app = new Vue({
         });
     },
     methods: {
-        search: function () {},
-        toggleMainDetailView: function (e, id) {
-            if (e) {
-                if (id) {
-                    this.$refs.modal.render(id);
-                }
-                e.preventDefault();
-                var modal = $("#main-detail-modal");
-                // console.log(modal);
-                if (modal.hasClass("active")) {
-                    modal.removeClass("active");
-                } else {
-                    modal.addClass("active");
-                }
-            }
-        },
         toggleNowPlaying: function (e) {
             if (e) {
                 e.preventDefault();
@@ -121,35 +105,16 @@ const app = new Vue({
                 }
             }
         },
-        // libraryTab: function (e) {
-        //     $('#search-tab').removeClass('active');
-        //     $('#library-tab').addClass('active');
-        //     if (!$('#library').hasClass('hidden')) {
-        //         $('#library').addClass('hidden');
-        //     } else {
-        //         $('#library').removeClass('hidden');
-        //     }
-        // },
-        // searchTab: function (e) {
-        //     $('#library-tab').removeClass('active');
-        //     $('#search-tab').addClass('active');
-        //     if (!$('#search').hasClass('hidden')) {
-        //         $('#search').addClass('hidden');
-        //     } else {
-        //         $('#search').removeClass('hidden');
-        //     }
-        // },
         audioEnded: function () {
-            // console.log("ended")
-            var i = this.$refs.library.libraryItems.indexOf(this.playingItem)
+            var i = this.$children[0].$refs.library.libraryItems.indexOf(this.playingItem)
             if (i == -1) {
                 return;
             }
-            if ((i + 1) >= this.$refs.library.libraryItems.length) {
+            if ((i + 1) >= this.$children[0].$refs.library.libraryItems.length) {
                 // End of  list.
                 return;
             }
-            this.$refs.library.playItem(null, i + 1);
+            this.$children[0].$refs.library.playItem(null, i + 1);
         }
     },
 })

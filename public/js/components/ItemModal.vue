@@ -31,48 +31,47 @@
                       <dd>
                           {{ item.track }}/{{ item.tracktotal }}
                       </dd>
-                          <span v-if="item.disc">
-                          <dt>Disc:</dt>
-                          <dd>
-                              {{ item.disc }}/{{ item.disctotal }}
+                      <span v-if="item.disc">
+                      <dt>Disc:</dt>
+                      <dd>
+                          {{ item.disc }}/{{ item.disctotal }}
+                      </dd>
+                      </span>
+                      <dt>Length:</dt>
+                      <dd>
+                          {{ timeFormat(item.length) }}
+                      </dd>
+                      <dt>Format:</dt>
+                      <dd>
+                          {{ item.format }}
+                      </dd>
+                      <dt>Bitrate:</dt>
+                      <dd>
+                      {{ Math.round(item.bitrate/1000) }} kbps
+                      </dd>
+                      <span v-if="item.mb_trackid">
+                      <dt>MusicBrainz entry:</dt>
+                      <dd>
+                          <a target="_blank" :href='"http://musicbrainz.org/recording/"+item.mb_trackid'>view</a>
+                      </dd>
+                      </span>
+                      <dt>File:</dt>
+                      <dd>
+                          <a target="_blank" class="download" :href='"../api/"+ item.id +"/file"'>download</a>
+                      </dd>
+                      <span v-if="item.lyrics">
+                          <dt>Lyrics:</dt>
+                          <dd class="lyrics">
+                              {{ item.lyrics }}
                           </dd>
-                          </span>
-
-                              <dt>Length:</dt>
-                              <dd>
-                                  {{ timeFormat(item.length) }}
-                              </dd>
-                              <dt>Format:</dt>
-                              <dd>
-                                  {{ item.format }}
-                              </dd>
-                              <dt>Bitrate:</dt>
-                              <dd>
-                                  {{ Math.round(item.bitrate/1000) }} kbps</dd>
-                                  <span v-if="item.mb_trackid">
-                                  <dt>MusicBrainz entry:</dt>
-                                  <dd>
-                                      <a target="_blank" :href='"http://musicbrainz.org/recording/"+item.mb_trackid'>view</a>
-                                  </dd>
-                                  </span>
-                                      <dt>File:</dt>
-                                      <dd>
-                                          <a target="_blank" class="download" :href='"../api/"+ item.id +"/file"'>download</a>
-                                      </dd>
-                                      
-                                      <span v-if="item.lyrics">
-                                          <dt>Lyrics:</dt>
-                                          <dd class="lyrics">
-                                              {{ item.lyrics }}
-                                          </dd>
-                                      </span>
-                                              <span v-if="item.comments">
-                                                  <dt>Comments:</dt>
-                                                  <dd>
-                                                      {{ item.comments }}
-                                                  </dd>
-                                                  </span>
-                              </dl>
+                      </span>
+                      <span v-if="item.comments">
+                        <dt>Comments:</dt>
+                        <dd>
+                            {{ item.comments }}
+                        </dd>
+                      </span>
+                </dl>
               </div>
           </div>
           <div class="modal-footer">
@@ -135,7 +134,7 @@ export default {
     },
     close: function(e) {
       //todo fix playback stops when modal is closed
-      this.$root.toggleMainDetailView(e);
+      this.$root.$refs.parent.toggleMainDetailView(e);
     }
   }
 };

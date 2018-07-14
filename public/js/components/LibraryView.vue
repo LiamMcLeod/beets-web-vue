@@ -30,7 +30,7 @@ export default {
   },
   created: function() {
     if (!this.searchTerm) this.fetchItems();
-    else this.searchItems();
+    // else this.searchItems();
     //Todo something
   },
   mounted: function() {},
@@ -49,15 +49,16 @@ export default {
       });
     },
     searchItems: function() {
+      this.clearItems();
       this.$http.get("/api/query/" + this.searchTerm).then(function(res) {
-        // if (res.data.items) {
-        //todo finish
-        // this.hasItems = res.data.items.length;
-        // this.libraryItems = res.data.items;
-        // } else {
-        // this.hasItems = 0;
-        // this.error = "There was an error with your request";
-        // }
+        if (res.data.results) {
+          // todo finish
+          this.hasItems = res.data.results.length;
+          this.libraryItems = res.data.results;
+        } else {
+          this.hasItems = 0;
+          this.error = "There was an error with your request";
+        }
       });
     },
     selectItem: function(e) {
@@ -125,6 +126,9 @@ export default {
       // console.log(index.context.rowIndex - 1);
       index = index.context.rowIndex - 1;
       return index;
+    },
+    clearItems: function() {
+      this.libraryItems = {};
     }
   }
 };

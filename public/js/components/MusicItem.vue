@@ -43,7 +43,7 @@ export default {
   mounted: function() {},
   methods: {
     toggleModalView: function(e) {
-      this.$root.toggleMainDetailView(e, this.item.id);
+      this.$root.$refs.parent.toggleMainDetailView(e, this.item.id);
     }
   }
 };
