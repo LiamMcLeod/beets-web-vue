@@ -141,7 +141,7 @@ const app = new Vue({
             }
             console.log(this.$refs.library.libraryItems.length);
             // ? -1 Might not be necessary.
-            if ((i + 1) >= this.$refs.library.libraryItems.length-1) {
+            if ((i + 1) >= this.$refs.library.libraryItems.length) {
                 // End of  list.
                 return;
             }
