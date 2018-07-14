@@ -89,8 +89,6 @@ const app = new Vue({
         toggleMainDetailView: function (e, id) {
             if (e) {
                 if (id) {
-                    // console.log(id);
-                    // console.log(window.vm);
                     this.$refs.modal.render(id);
                 }
                 e.preventDefault();
@@ -127,8 +125,6 @@ const app = new Vue({
             if (i == -1) {
                 return;
             }
-
-            // ? -1 Might not be necessary.
             if ((i + 1) >= this.$refs.library.libraryItems.length) {
                 // End of  list.
                 return;
