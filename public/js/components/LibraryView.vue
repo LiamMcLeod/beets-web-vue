@@ -82,29 +82,39 @@ export default {
         this.clickEvent.clicks = 0;
       }
     },
-    playItem: function(e, i) {
-      if (!i) {
+    playItem: function(e, i, itemId) {
+      if (!i && !itemId) {
         i = this.getActualIndex(e);
+        //? Fallback in case problems present with either index fetching methods
+        // var index = this.getIndexByRow(e);
         this.selectItem(e);
       }
+      if (itemId) {
+        var id = itemId
+        var url = "/api/" + id + "/file";
+        var player = $("#player audio");
 
-      // console.log(i);
-      //? Fallback in case problems present with either index fetching methods
-      // var index = this.getIndexByRow(e);
+        player.attr("src", url);
+        player.get(0).play();
+        $("#moreButton").removeClass("hidden");
+        this.$root.$refs.playing.render(id);
+        this.$root.playingItem = this.libraryItems.indexOf(id);
+      } else {
+        // console.log(i);
+        console.log(this.libraryItems[i].id);
+        var id = this.libraryItems[i].id;
+        var url = "/api/" + id + "/file";
+        var player = $("#player audio");
 
-      // console.log(this.libraryItems[i].id);
-      var id = this.libraryItems[i].id;
-      var url = "/api/" + id + "/file";
-      var player = $("#player audio");
+        player.attr("src", url);
 
-      player.attr("src", url);
+        //Controls playback
+        player.get(0).play();
 
-      //Controls playback
-      player.get(0).play();
-
-      $("#moreButton").removeClass("hidden");
-      this.$root.$refs.playing.render(id);
-      this.$root.playingItem = this.libraryItems[i];
+        $("#moreButton").removeClass("hidden");
+        this.$root.$refs.playing.render(id);
+        this.$root.playingItem = this.libraryItems[i];
+      }
       // Set playing item and component
       // if (this.playingItem != null) {
       //   this.playingItem.entryView.setPlaying(false);

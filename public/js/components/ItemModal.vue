@@ -76,7 +76,7 @@
           </div>
           <div class="modal-footer">
               <!-- <button class="btn">Close</button> -->
-              <!-- <button class="btn btn-primary">Play</button> -->
+              <button @click="playClick()" class="btn btn-primary">Play</button>
           </div>
       </div>
   </div>
@@ -131,6 +131,9 @@ export default {
         secs = "0" + secs;
       }
       return mins + ":" + secs;
+    },
+    playClick: function() {
+      this.$parent.$refs.library.playItem(null, null, this.itemId);
     },
     close: function(e) {
       //todo fix playback stops when modal is closed
