@@ -1,4 +1,4 @@
- <style>
+<style>
 </style>
  <template>
     <div v-if="item" id="more-panel" class="container">
@@ -67,7 +67,7 @@ export default {
       });
       $("#moreButton").removeClass("hidden");
       $("#nomoreButton").addClass("hidden");
-    },
+    }
   }
 };
 

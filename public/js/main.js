@@ -78,12 +78,24 @@ const app = new Vue({
     computed: {},
     filters: {},
     mounted: function () {
-        // console.log();
-        $("#player audio").bind("ended", {
-            app: this
-        }, function (e) {
-            //TO DO: Your code goes here...
-            app.audioEnded();
+        // $("#player audio").bind("ended", {
+        //     app: this
+        // }, function (e) {
+        //     app.audioEnded();
+        // });
+        var vue = this;
+        $('#player audio').bind({
+            loadedmetadata: function (e) {
+                vue.sliderSetMax();
+            },
+            durationchange: function (e) {
+            },
+            ended: function (e) {
+                vue.audioEnded();
+            },
+            timeupdate: function (e) {
+                vue.updateSlider();
+            }
         });
     },
     methods: {
@@ -115,6 +127,20 @@ const app = new Vue({
                 return;
             }
             this.$children[0].$refs.library.playItem(null, i + 1);
+        },
+        updateSlider: function () {
+            var slider = document.querySelector('#seekSlider');
+            var audio = $('#player audio').get(0);
+            // console.log(slider.value);
+            // console.log(audio.currentTime);
+            slider.value = audio.currentTime;
+        },
+        sliderSetMax: function () {
+            var slider = document.querySelector('#seekSlider');
+            var audio = $('#player audio').get(0);
+            // console.log(slider.value);
+            // console.log(audio.currentTime);
+            slider.max = audio.duration;
         }
     },
 })

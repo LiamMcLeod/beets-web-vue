@@ -1,6 +1,6 @@
- <style>
+<style>
 </style>
- <template>
+<template>
   <div class="modal" id="main-detail-modal">
       <a @click="close($event)" href="javascript:void(0)" class="modal-overlay" aria-label="Close"></a>
       <div class="modal-container">
@@ -80,8 +80,8 @@
           </div>
       </div>
   </div>
- </template>
- <script>
+</template>
+<script>
 export default {
   mixins: [],
   props: {

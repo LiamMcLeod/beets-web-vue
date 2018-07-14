@@ -101,7 +101,7 @@ export default {
         this.$root.playingItem = this.libraryItems.indexOf(id);
       } else {
         // console.log(i);
-        console.log(this.libraryItems[i].id);
+        // console.log(this.libraryItems[i].id);
         var id = this.libraryItems[i].id;
         var url = "/api/" + id + "/file";
         var player = $("#player audio");

@@ -1,10 +1,9 @@
- <style>
+<style>
 </style>
- <template>
+<template>
    <tr>
      <td>
-        <!-- todo v-if -->
-         <span v-if="$root.playingItem.id==item.id" class="playing">&#9654;</span>
+        <span v-if="$root.playingItem.id==item.id" class="playing">&#9654;</span>
      </td>
      <td>
          {{ item.title }}
@@ -20,8 +19,8 @@
      </td>
      <td hidden class="libraryIndex">{{index}}</td>
    </tr>
- </template>
- <script>
+</template>
+<script>
 export default {
   mixins: [],
   props: {

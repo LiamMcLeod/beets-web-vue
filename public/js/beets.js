@@ -215,6 +215,7 @@ $.fn.player = function (debug) {
         timeupdate: function () {
             dbg('timeupdate ' + audio.currentTime);
             showTimes();
+            // updateSlider();
         },
         durationchange: function () {
             dbg('durationchange ' + audio.duration);
@@ -223,9 +224,11 @@ $.fn.player = function (debug) {
         },
         loadeddata: function () {
             dbg('loadeddata');
+            sliderSetMax();
         },
         loadedmetadata: function () {
             dbg('loadedmetadata');
+            sliderSetMax();
         }
     });
 }
