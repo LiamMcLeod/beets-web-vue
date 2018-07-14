@@ -90,7 +90,7 @@ export default {
         this.selectItem(e);
       }
       if (itemId) {
-        var id = itemId
+        var id = itemId;
         var url = "/api/" + id + "/file";
         var player = $("#player audio");
 
