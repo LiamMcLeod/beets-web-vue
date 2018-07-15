@@ -26,7 +26,7 @@
                         <form id="queryForm" @submit.prevent="submit()">
                             <input class="form-input" name="search" type="search" id="query" placeholder="Search" v-model="searchQuery" @keyup.enter="submit()">
                         </form>
-                        <button @click="submit()" id="searchButton" class="btn btn-primary input-group-btn">Search</button>
+                        <button @click="submit($event)" id="searchButton" class="btn btn-primary input-group-btn">Search</button>
                     </div>
                 </div>
             </header>
@@ -105,6 +105,7 @@ export default {
       $("#search-tab").addClass("active");
     },
     submit: function(e) {
+      // e.preventDefault();
       if (this.searchQuery == "") {
         this.searchTabShow = false;
         this.libraryShow = true;
@@ -113,6 +114,8 @@ export default {
         this.searchTab();
         this.$refs.search.searchItems();
       }
+    },
+    eventStopProp: function(e){
     }
   }
 };

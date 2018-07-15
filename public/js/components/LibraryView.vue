@@ -52,7 +52,6 @@ export default {
       this.clearItems();
       this.$http.get("/api/query/" + this.searchTerm).then(function(res) {
         if (res.data.results) {
-          // todo finish
           this.hasItems = res.data.results.length;
           this.libraryItems = res.data.results;
         } else {
@@ -62,8 +61,7 @@ export default {
       });
     },
     selectItem: function(e) {
-       // TODO SOMETHING IN HERE TOGGLES ALL BUTTONS IF USER ACCIDENTALLY DRAGS MOUSE CLICK OVER LIBRARY
-      //  TODO SOmething is search view fucks up the buttons too.
+      // TODO Double click doesnät work on Mozilla.
       //? Copy+Paste from https://stackoverflow.com/questions/41303982/vue-js-how-to-handle-click-and-dblclick-events-on-same-element
       this.clickEvent.clicks++;
       if (this.clickEvent.clicks === 1) {
@@ -71,11 +69,20 @@ export default {
         this.clickEvent.timer = setTimeout(function() {
           // console.log(e);
           $("#library tr").removeClass("selected");
+          $("#search tr").removeClass("selected");
           if (!$("#library tr").hasClass("selected")) {
             $("td button").addClass("hidden");
           }
-          $(e.srcElement.parentElement).addClass("selected");
-          $(".selected td button").removeClass("hidden");
+          if (!$("#search tr").hasClass("selected")) {
+            $("td button").addClass("hidden");
+          }
+          
+          var parentEl = $(e.srcElement.parentElement);
+          if (parentEl.is("table") || parentEl.is("tbody")) {
+          } else {
+            parentEl.addClass("selected");
+            $(".selected td button").removeClass("hidden");
+          }
 
           self.clickEvent.clicks = 0;
         }, this.clickEvent.delay);

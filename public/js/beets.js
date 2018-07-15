@@ -134,9 +134,7 @@ $.fn.player = function (debug) {
         }
     }
 
-    // TODOS
-    // Fix seeker
-    // Audio range bar too quick
+    // TODOS Fix seeker
 
     // Utilities.
     var timePercent = function (cur, total) {
@@ -250,7 +248,7 @@ $.fn.disableSelection = function () {
 
 $(function () {
     // Disable selection on UI elements.
-    $('#library').disableSelection();
+    $('main').disableSelection();
     $('#header').disableSelection();
 
     //! Audio player setup.

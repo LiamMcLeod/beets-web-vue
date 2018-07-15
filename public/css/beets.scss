@@ -1,5 +1,4 @@
 // $primary-color: #2b2f46 !default;
-
 ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
@@ -27,6 +26,7 @@
 input[type=range]::-moz-range-progress {
     background-color: $primary-color;
 }
+
 input[type=range]::-ms-fill-lower {
     background-color: $primary-color;
 }
@@ -68,6 +68,7 @@ a.navbar-brand.mr-2:hover {
 .tab .tab-item a.active {
     color: #fff;
 }
+
 .tab.tab-block .tab-item {
     background: #fff;
 }
@@ -116,19 +117,22 @@ a.navbar-brand.mr-2:hover {
 //     margin-left: 5px;
 //     font-size: 0.9em;
 // }
-#library tr {
+#library tr,
+#search tr {
     list-style: none;
     padding: 4px 8px;
     margin: 0;
     cursor: pointer;
 }
 
-#library tr.selected {
+#library tr.selected,
+#search tr.selected {
     color: #01116F;
     background: #fff;
 }
 
-#library tr .playing {
+#library tr .playing,
+#search tr .playing {
     margin-left: 5px;
     font-size: 0.9em;
 }
@@ -288,6 +292,7 @@ a.navbar-brand.mr-2:hover {
 .more-button i {
     margin-top: -5px;
 }
+
 #more-panel {
     position: fixed;
     z-index: 1;
@@ -324,9 +329,11 @@ a.navbar-brand.mr-2:hover {
 }
 
 /* Keep at bottom */
-.no-height{
+
+.no-height {
     height: 0;
 }
+
 .full-height {
     height: 100%;
 }
@@ -334,18 +341,20 @@ a.navbar-brand.mr-2:hover {
 no-overflow {
     overflow: none;
 }
+
 .invisible {
     visibility: hidden;
 }
+
 .hidden {
     display: none !important;
 }
 
 //! for Chrome progress bar
 /** Based on https://codepen.io/nlfonseca/pen/MwbovQ **/
+
 $size: 1px;
 $color: $primary-color;
-
 $slider-width-number: 1100;
 $slider-width: #{$slider-width-number}px;
 $slider-height: 2px;
@@ -358,39 +367,32 @@ $thumb-background: $primary-color;
 $thumb-border: 1px solid #777;
 $shadow-size: -5px;
 $fit-thumb-in-slider: -5px;
-
 @function makelongshadow($color, $size) {
-  $val: 5px 0 0 $size $color;
-  
-  @for $i from 6 through $slider-width-number {
-    $val: #{$val}, #{$i}px 0 0 $size #{$color};
-  }
-  
-  @return $val;
+    $val: 5px 0 0 $size $color;
+    @for $i from 6 through $slider-width-number {
+        $val: #{$val},
+        #{$i}px 0 0 $size #{$color};
+    }
+    @return $val;
 }
 
 .slider {
-  overflow: hidden;
-
-  &:focus {
-    box-shadow: none;
-    outline: none;
-  }
-  
-  &::-webkit-slider-runnable-track {
-    background: $background-filled-slider;
-    // content: '';
-    height: $slider-height;
-    pointer-events: none;
-  }
-  
-  &::-webkit-slider-thumb {
-    // @include size($thumb-width $thumb-height);
-    
-    appearance: none;
-    background: $thumb-background;
-    border-radius: $thumb-radius;
-    box-shadow: makelongshadow($background-slider, $shadow-size);
-    margin-top: $fit-thumb-in-slider;
-  }
+    overflow: hidden;
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+    &::-webkit-slider-runnable-track {
+        background: $background-filled-slider; // content: '';
+        height: $slider-height;
+        pointer-events: none;
+    }
+    &::-webkit-slider-thumb {
+        // @include size($thumb-width $thumb-height);
+        appearance: none;
+        background: $thumb-background;
+        border-radius: $thumb-radius;
+        box-shadow: makelongshadow($background-slider, $shadow-size);
+        margin-top: $fit-thumb-in-slider;
+    }
 }

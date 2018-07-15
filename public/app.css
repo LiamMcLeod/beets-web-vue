@@ -5742,19 +5742,22 @@ a.navbar-brand.mr-2:hover {
   margin-bottom: 50px;
 }
 
-#library tr {
+#library tr,
+#search tr {
   list-style: none;
   padding: 4px 8px;
   margin: 0;
   cursor: pointer;
 }
 
-#library tr.selected {
+#library tr.selected,
+#search tr.selected {
   color: #01116F;
   background: #fff;
 }
 
-#library tr .playing {
+#library tr .playing,
+#search tr .playing {
   margin-left: 5px;
   font-size: 0.9em;
 }
