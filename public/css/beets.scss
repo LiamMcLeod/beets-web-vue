@@ -121,7 +121,8 @@ a.navbar-brand.mr-2:hover {
 }
 
 #library tr.selected {
-    color: $primary-color;
+    color: #01116F;
+    background: #fff;
 }
 
 #library tr .playing {
@@ -276,7 +277,7 @@ a.navbar-brand.mr-2:hover {
 }
 
 .more-button {
-    margin-top: -10px;
+    margin-top: -20px;
     height: 20px;
     width: 20px;
 }
@@ -325,6 +326,9 @@ a.navbar-brand.mr-2:hover {
 no-overflow {
     overflow: none;
 }
+.invisible {
+    visibility: hidden;
+}
 .hidden {
     display: none !important;
 }
@@ -334,7 +338,7 @@ no-overflow {
 $size: 1px;
 $color: $primary-color;
 
-$slider-width-number: 1000;
+$slider-width-number: 1100;
 $slider-width: #{$slider-width-number}px;
 $slider-height: 2px;
 $background-slider: #e1e1e1;

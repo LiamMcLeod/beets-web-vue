@@ -65,7 +65,7 @@ export default {
       $("#more-panel").css({
         height: "0"
       });
-      $("#moreButton").removeClass("hidden");
+      $("#moreButton").removeClass("invisble");
       $("#nomoreButton").addClass("hidden");
     }
   }

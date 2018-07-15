@@ -92,37 +92,24 @@ export default {
       if (itemId) {
         var id = itemId;
         var url = "/api/" + id + "/file";
-        var player = $("#player audio");
 
-        player.attr("src", url);
-        player.get(0).play();
-        $("#moreButton").removeClass("hidden");
-        this.$root.$refs.playing.render(id);
+        this.play(url, id);
         this.$root.playingItem = this.libraryItems.indexOf(id);
       } else {
-        // console.log(i);
-        // console.log(this.libraryItems[i].id);
         var id = this.libraryItems[i].id;
         var url = "/api/" + id + "/file";
-        var player = $("#player audio");
 
-        player.attr("src", url);
-
-        //Controls playback
-        player.get(0).play();
-        this.$root.audioIsPaused=false;
-        $("#moreButton").removeClass("hidden");
-        this.$root.$refs.playing.render(id);
+        this.play(url, id);
         this.$root.playingItem = this.libraryItems[i];
       }
-      // Set playing item and component
-      // if (this.playingItem != null) {
-      //   this.playingItem.entryView.setPlaying(false);
-      // }
-      // item.entryView.setPlaying(true);
-      // this.playingItem = item;
-      //TODO Build the template here
-      // this.nowPlaying(item);
+    },
+    play: function(url, id) {
+      var player = $("#player audio");
+      player.attr("src", url);
+      player.get(0).play();
+      this.$root.audioIsPaused = false;
+      $("#moreButton").removeClass("invisible");
+      this.$root.$refs.playing.render(id);
     },
     getActualIndex: function(e) {
       var index = $(e.srcElement.parentElement).find(".libraryIndex");
