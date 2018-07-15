@@ -73,7 +73,8 @@ const app = new Vue({
     data: {
         playingItem: {},
         searchQuery: "",
-        audioIsPaused: false
+        audioIsPaused: false,
+        previousFlag: false,
     },
     props: {},
     computed: {},
@@ -134,19 +135,40 @@ const app = new Vue({
                 }
             }
         },
-        peekNowPlaying: function(){
+        peekNowPlaying: function () {
             //? Maybe not necessary.
         },
         audioEnded: function () {
+            this.audioNext();
+        },
+        audioNext: function () {
             var i = this.$children[0].$refs.library.libraryItems.indexOf(this.playingItem)
             if (i == -1) {
                 return;
             }
             if ((i + 1) >= this.$children[0].$refs.library.libraryItems.length) {
-                // End of  list.
                 return;
             }
             this.$children[0].$refs.library.playItem(null, i + 1);
+        },
+        audioPrevious: function () {
+            if (this.previousFlag) {
+                //? Maybe require this function twice and use a flag.
+                //* Once to restart song, Once more for previous
+                var i = this.$children[0].$refs.library.libraryItems.indexOf(this.playingItem)
+                if (i == -1) {
+                    return;
+                }
+                if ((i + 1) >= this.$children[0].$refs.library.libraryItems.length) {
+                    return;
+                }
+                this.$children[0].$refs.library.playItem(null, i - 1);
+                this.previousFlag = false;
+            } else {
+                var audio = $('#player audio').get(0);
+                audio.currentTime = 0;
+                this.previousFlag = true;
+            }
         },
         //* https://stackoverflow.com/questions/28316643/detecting-user-dragging-range-type-input
         sliderUpdate: function () {

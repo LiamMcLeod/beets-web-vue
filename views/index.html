@@ -91,12 +91,12 @@
             <audio></audio>
             <div class="columns">
                 <div class="column col-2 text-center">
-                    <a href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
+                    <a @click="audioPrevious()" href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
 
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPause">Pause</a>
 
-                    <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
+                    <a @click="audioNext()" href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
                 </div>
                 <div class="column col-7 no-overflow">
                     <span id=seek>

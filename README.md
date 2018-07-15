@@ -46,6 +46,6 @@ Nothing too interesting. Just a preview.
 # TODOS
 - Double clicks do not work on Moz-Firefox
 - Slider input/change event conflicts with timeupdate event on audio, making seeking difficult to implement. Pausing and boolean flagging seem not to work.
-- Test how well it runs on a larger library.
 - Some loading components
 - Maybe some sorting and categorising options.
+- it's quite slow on larger libraries, maybe some pagination is required
