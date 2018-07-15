@@ -110,7 +110,7 @@ export default {
 
         //Controls playback
         player.get(0).play();
-
+        this.$root.audioIsPaused=false;
         $("#moreButton").removeClass("hidden");
         this.$root.$refs.playing.render(id);
         this.$root.playingItem = this.libraryItems[i];

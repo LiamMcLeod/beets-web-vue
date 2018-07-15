@@ -73,6 +73,7 @@ const app = new Vue({
     data: {
         playingItem: {},
         searchQuery: "",
+        audioIsPaused: false
     },
     props: {},
     computed: {},
@@ -93,7 +94,25 @@ const app = new Vue({
                 vue.audioEnded();
             },
             timeupdate: function (e) {
+                // console.log(e)
+                // if (!vue.audioIsPaused) {
                 vue.sliderUpdate();
+                // }
+            }
+        });
+        $('#seek input').bind({
+            input: function (e) {
+                // console.log(this.value);
+                vue.sliderChange(e);
+            },
+            onchange: function (e) {
+                vue.sliderReleased();
+            },
+            mousedown: function (e) {
+                // vue.sliderChange(e);
+            },
+            mouseup: function (e) {
+                // vue.sliderReleased();
             }
         });
     },
@@ -127,6 +146,7 @@ const app = new Vue({
             }
             this.$children[0].$refs.library.playItem(null, i + 1);
         },
+        //* https://stackoverflow.com/questions/28316643/detecting-user-dragging-range-type-input
         sliderUpdate: function () {
             var slider = document.querySelector('#seekSlider');
             var audio = $('#player audio').get(0);
@@ -141,17 +161,20 @@ const app = new Vue({
             // console.log(audio.currentTime);
             slider.max = audio.duration;
         },
-        sliderChange: function () {
-            audioIsPaused = audio.paused;
+        sliderChange: function (e) {
+            var audio = $('#player audio').get(0);
+            var slider = document.querySelector('#seekSlider');
             // Pause while it evaluates the times
             audio.pause();
+            this.audioIsPaused = audio.paused;
             // audio time to slider time
-            audio.currentTime = sliderSeek.value
+            audio.currentTime = slider.value;
         },
         sliderReleased: function () {
             var audio = $('#player audio').get(0);
-            if (!audioIsPaused) {
+            if (this.audioIsPaused) {
                 audio.play();
+                this.audioIsPaused = false;
             }
         }
     },
