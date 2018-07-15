@@ -1,3 +1,5 @@
+// $primary-color: #2b2f46 !default;
+
 ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
@@ -23,10 +25,10 @@
 }
 
 input[type=range]::-moz-range-progress {
-    background-color: #5755d9;
+    background-color: $primary-color;
 }
 input[type=range]::-ms-fill-lower {
-    background-color: #5755d9;
+    background-color: $primary-color;
 }
 
 body {
@@ -40,6 +42,11 @@ header {
     color: white;
 }
 
+header .brand-img {
+    height: 102px;
+    margin: -20px 4px 0 4px;
+}
+
 a.navbar-brand.mr-2 {
     font-size: 1.1em;
     font-weight: bold;
@@ -51,11 +58,11 @@ a.navbar-brand.mr-2:hover {
 }
 
 .tab.tab-block {
-    color: #5755d9;
+    color: $primary-color;
 }
 
 .tab.tab-block .active {
-    background-color: #5755d9;
+    background-color: $primary-color;
 }
 
 .tab .tab-item a.active {
@@ -114,7 +121,7 @@ a.navbar-brand.mr-2:hover {
 }
 
 #library tr.selected {
-    color: #5755d9;
+    color: $primary-color;
 }
 
 #library tr .playing {
@@ -325,17 +332,17 @@ no-overflow {
 //! for Chrome progress bar
 /** Based on https://codepen.io/nlfonseca/pen/MwbovQ **/
 $size: 1px;
-$color: #5755d9;
+$color: $primary-color;
 
 $slider-width-number: 1000;
 $slider-width: #{$slider-width-number}px;
 $slider-height: 2px;
 $background-slider: #e1e1e1;
-$background-filled-slider: #5755d9;
+$background-filled-slider: $primary-color;
 $thumb-width: 8px;
 $thumb-height: 8px;
 $thumb-radius: 8px;
-$thumb-background: #5755d9;
+$thumb-background: $primary-color;
 $thumb-border: 1px solid #777;
 $shadow-size: -5px;
 $fit-thumb-in-slider: -5px;

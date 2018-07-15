@@ -3,8 +3,13 @@
  <template>
         <div class="container">
             <header class="columns">
-                <div class="column col-2 text-center p-top-15">
-                    <a class="navbar-brand mr-2" href="/">Beets</a>
+                <div class="column col-2 text-center">
+                    <!-- <a class="navbar-brand mr-2" href="/">Beets</a> -->
+                    <img src="/public/beets.png" class="brand-img">
+                    <!-- 
+                      Image Credit https://github.com/k-syusteem
+                      https://github.com/beetbox/beets/pull/2935
+                     -->
                 </div>
                 <div id="header" class="column col-6">
                     <ul class="tab tab-block">
