@@ -121,19 +121,21 @@ const app = new Vue({
             if (e) {
                 e.preventDefault();
                 if (!$('#moreButton').hasClass("hidden")) {
-                    $('#more-panel').css({
-                        'height': '100%'
-                    });
+                    $('#more-panel').removeClass('no-height');
+                    $('#more-panel').addClass('full-height');
+
                     $('#moreButton').addClass('hidden');
                     $('#nomoreButton').removeClass('hidden');
                 } else {
-                    $('#more-panel').css({
-                        'height': '0'
-                    });
+                    $('#more-panel').removeClass('full-height');
+                    $('#more-panel').addClass('no-height')
                     $('#moreButton').removeClass('hidden');
                     $('#nomoreButton').addClass('hidden');
                 }
             }
+        },
+        peekNowPlaying: function(){
+            //? Maybe not necessary.
         },
         audioEnded: function () {
             var i = this.$children[0].$refs.library.libraryItems.indexOf(this.playingItem)

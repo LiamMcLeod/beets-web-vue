@@ -62,6 +62,8 @@ export default {
       });
     },
     selectItem: function(e) {
+       // TODO SOMETHING IN HERE TOGGLES ALL BUTTONS IF USER ACCIDENTALLY DRAGS MOUSE CLICK OVER LIBRARY
+      //  TODO SOmething is search view fucks up the buttons too.
       //? Copy+Paste from https://stackoverflow.com/questions/41303982/vue-js-how-to-handle-click-and-dblclick-events-on-same-element
       this.clickEvent.clicks++;
       if (this.clickEvent.clicks === 1) {
@@ -109,6 +111,7 @@ export default {
       player.get(0).play();
       this.$root.audioIsPaused = false;
       $("#moreButton").removeClass("invisible");
+      this.$root.peekNowPlaying();
       this.$root.$refs.playing.render(id);
     },
     getActualIndex: function(e) {

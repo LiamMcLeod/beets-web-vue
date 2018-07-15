@@ -3,7 +3,7 @@
  <template>
         <div class="container">
             <header class="columns">
-                <div class="column col-2 text-center">
+                <div class="column col-3 text-center">
                     <!-- <a class="navbar-brand mr-2" href="/">Beets</a> -->
                     <img src="/public/beets.png" class="brand-img">
                     <!-- 
@@ -21,7 +21,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="column col-4">
+                <div class="column col-3">
                     <div class="input-group input-inline p-top-8">
                         <form id="queryForm" @submit.prevent="submit()">
                             <input class="form-input" name="search" type="search" id="query" placeholder="Search" v-model="searchQuery" @keyup.enter="submit()">

@@ -1,7 +1,7 @@
 <style>
 </style>
  <template>
-    <div v-if="item" id="more-panel" class="container">
+    <div v-if="item" id="more-panel" class="container text-center no-height">
         <a href="javascript:void(0)" class="close-more-button" @click="$root.toggleNowPlaying($event)">&times;</a>
         <div id="more-panel-detail">
           <span class="artist">
@@ -17,9 +17,9 @@
           <span class="title">
               {{ item.title }}
           </span>
-          <div class="container align-center">
+          <!-- <div class="container align-center">
               <button class="play btn btn-primary m-top-15">Play</button>
-          </div>
+          </div> -->
         </div>
     </div>
  </template>

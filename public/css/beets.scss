@@ -68,6 +68,9 @@ a.navbar-brand.mr-2:hover {
 .tab .tab-item a.active {
     color: #fff;
 }
+.tab.tab-block .tab-item {
+    background: #fff;
+}
 
 #entities {
     /* background: #fff; */
@@ -285,9 +288,7 @@ a.navbar-brand.mr-2:hover {
 .more-button i {
     margin-top: -5px;
 }
-
 #more-panel {
-    height: 0;
     position: fixed;
     z-index: 1;
     bottom: 0;
@@ -323,6 +324,13 @@ a.navbar-brand.mr-2:hover {
 }
 
 /* Keep at bottom */
+.no-height{
+    height: 0;
+}
+.full-height {
+    height: 100%;
+}
+
 no-overflow {
     overflow: none;
 }
