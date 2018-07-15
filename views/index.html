@@ -75,7 +75,7 @@
 
         <!-- <audio-player></audio-player> -->
 
-        <section id="player" class="container">
+        <section id="player" class="container p-top-8">
             <div class="container">
                 <button @click="toggleNowPlaying($event)" id="moreButton" class="align-center btn btn-primary btn-action circle more-button hidden">
                     <i class="icon icon-arrow-up"></i>
@@ -86,7 +86,7 @@
             </div>
             <audio></audio>
             <div class="columns">
-                <div class="column col-3 text-center">
+                <div class="column col-2 text-center">
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
 
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
@@ -94,7 +94,7 @@
 
                     <a href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
                 </div>
-                <div class="column col-6">
+                <div class="column col-7 no-overflow">
                     <span id=seek>
                         <input type="range" value="0" step="any" class="slider" id="seekSlider">
                     </span>

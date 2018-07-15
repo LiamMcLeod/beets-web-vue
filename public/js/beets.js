@@ -224,11 +224,11 @@ $.fn.player = function (debug) {
         },
         loadeddata: function () {
             dbg('loadeddata');
-            sliderSetMax();
+            // sliderSetMax();
         },
         loadedmetadata: function () {
             dbg('loadedmetadata');
-            sliderSetMax();
+            // sliderSetMax();
         }
     });
 }

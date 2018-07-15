@@ -22,6 +22,13 @@
     background: #666;
 }
 
+input[type=range]::-moz-range-progress {
+    background-color: #5755d9;
+}
+input[type=range]::-ms-fill-lower {
+    background-color: #5755d9;
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     overflow-x: hidden;
@@ -308,7 +315,63 @@ a.navbar-brand.mr-2:hover {
 }
 
 /* Keep at bottom */
-
+no-overflow {
+    overflow: none;
+}
 .hidden {
     display: none !important;
+}
+
+//! for Chrome progress bar
+/** Based on https://codepen.io/nlfonseca/pen/MwbovQ **/
+$size: 1px;
+$color: #5755d9;
+
+$slider-width-number: 1000;
+$slider-width: #{$slider-width-number}px;
+$slider-height: 2px;
+$background-slider: #e1e1e1;
+$background-filled-slider: #5755d9;
+$thumb-width: 8px;
+$thumb-height: 8px;
+$thumb-radius: 8px;
+$thumb-background: #5755d9;
+$thumb-border: 1px solid #777;
+$shadow-size: -5px;
+$fit-thumb-in-slider: -5px;
+
+@function makelongshadow($color, $size) {
+  $val: 5px 0 0 $size $color;
+  
+  @for $i from 6 through $slider-width-number {
+    $val: #{$val}, #{$i}px 0 0 $size #{$color};
+  }
+  
+  @return $val;
+}
+
+.slider {
+  overflow: hidden;
+
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  &::-webkit-slider-runnable-track {
+    background: $background-filled-slider;
+    // content: '';
+    height: $slider-height;
+    pointer-events: none;
+  }
+  
+  &::-webkit-slider-thumb {
+    // @include size($thumb-width $thumb-height);
+    
+    appearance: none;
+    background: $thumb-background;
+    border-radius: $thumb-radius;
+    box-shadow: makelongshadow($background-slider, $shadow-size);
+    margin-top: $fit-thumb-in-slider;
+  }
 }
