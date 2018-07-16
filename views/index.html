@@ -10,73 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="manifest" href="site.webmanifest">
-    <!-- <link rel="apple-touch-icon" href="../public/favicon.ico"> -->
-    <!-- <link rel="icon" type="image/x-icon" href="../public/favicon.ico" /> -->
-
-    <!--TODO change to public -->
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
 
     <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" type="text/css">
     <link rel="stylesheet" href="../public/app.css" type="text/css">
 
-    <!-- <script src="{{ url_for('static', filename='app.js') }}"></script> -->
-       <!--
+    <!--
                             Logo Image Credit:
                       https://github.com/k-syusteem
                       https://github.com/beetbox/beets/pull/2935
-        --> 
+    -->
 </head>
 
 <body>
     <div id="app">
-        <!-- <div class="container">
-            <header id="header" class="columns">
-                <div class="column col-2 text-center p-top-15">
-                    <a class="navbar-brand mr-2" href="/">Beets</a>
-                </div>
-                <div class="column col-6">
-                    <ul class="tab tab-block">
-                        <li class="tab-item">
-                            <a href="javascript:void(0)" @click="libraryTab($event)" id="library-tab" class="active">Library</a>
-                        </li>
-                        <li class="tab-item">
-                            <a href="javascript:void(0)" @click="searchTab($event)" id="search-tab">Search</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="column col-4">
-                    <div class="input-group input-inline">
-                        <form id="queryForm">
-                            <input class="form-input" name="search" type="search" id="query" placeholder="Search">
-                        </form>
-                        <button id="searchButton" class="btn btn-primary input-group-btn">Search</button>
-                    </div>
-                </div>
-            </header>
-
-            <main>
-                <section id="library-view" class="container">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th></th>
-                                <th>Artist</th>
-                                <th>Album</th>
-                            </tr>
-                        </thead>
-                        <tbody id="library" is="library-view" ref="library"> </tbody>
-                        <tbody id="search" is="library-view" :search-term="searchQuery" ref="search" v-show=""> </tbody>
-                    </table>
-                </section>
-                <item-modal ref="modal"></item-modal>
-            </main>
-        </div> -->
         <parent-view ref="parent"> </parent-view>
 
         <now-playing ref="playing"></now-playing>
-        <!-- End of Main Body Content -->
-
+        
         <!-- <audio-player></audio-player> -->
 
         <section id="player" class="container p-top-8">
@@ -92,10 +44,8 @@
             <div class="columns">
                 <div class="column col-2 text-center">
                     <a @click="audioPrevious()" href="javascript:void(0)" class="btn btn-link" id="btnPrevious">Previous</a>
-
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPlay">Play</a>
                     <a href="javascript:void(0)" class="btn btn-link" id="btnPause">Pause</a>
-
                     <a @click="audioNext()" href="javascript:void(0)" class="btn btn-link" id="btnNext">Next</a>
                 </div>
                 <div class="column col-7 no-overflow">
@@ -122,9 +72,7 @@
         </section>
 
     </div>
-
     <script src="{{ url_for('static', filename='app.js') }}"></script>
-    <!-- <script src="../public/app.js"></script> -->
 </body>
 
 </html>
