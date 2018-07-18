@@ -4,8 +4,9 @@
         <div class="container">
             <header class="columns">
                 <div class="column col-3 text-center">
-                    <!-- <a class="navbar-brand mr-2" href="/">Beets</a> -->
-                    <img src="/public/beets.png" class="brand-img">
+                    <a href="/">
+                      <img src="/public/beets.png" class="brand-img">
+                    </a>
                     <!-- 
                       Image Credit https://github.com/k-syusteem
                       https://github.com/beetbox/beets/pull/2935
@@ -115,8 +116,7 @@ export default {
         this.$refs.search.searchItems();
       }
     },
-    eventStopProp: function(e){
-    }
+    eventStopProp: function(e) {}
   }
 };
 </script>

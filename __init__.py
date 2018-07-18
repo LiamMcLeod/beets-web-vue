@@ -267,15 +267,24 @@ def get_title_first(letter):
                         .format("*", "items", letter))
 
     items=[]
-    for row in rows:
-        #* Build object for JSON
-        items.append([col for col in row])
+    # for row in rows:
+    #     #* Build object for JSON
+    #     items.append([col for col in row])
+    # for item in items:        
+    #     #* Run through and decode all byte strings
+    #     item[7]=item[7].decode('utf-8')
+    # return flask.jsonify({'results': items})
 
-    for item in items:        
-        #* Run through and decode all byte strings
-        item[7]=item[7].decode('utf-8')
-    
-    return flask.jsonify({'results':items})
+    #? Gives item models for each id but there seems to be 
+    #? no method of "getting" every field into an new oject
+    #! TODO RETURN TO
+    # ids=[]
+    # for i, row in enumerate(rows):
+    #     ids.append(rows[i][15])
+    # for idx, i in enumerate(ids):
+    #     items.append(g.lib.get_item(i))
+
+    return flask.jsonify({'results': items})
 
 
 @app.route('/api/path/<everything:path>')

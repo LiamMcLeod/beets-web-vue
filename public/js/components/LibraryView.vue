@@ -50,18 +50,30 @@ export default {
     },
     searchItems: function(q = null) {
       this.clearItems();
-      this.$http
-        .get("/api/query/" + (q == null ? this.searchTerm : q))
-        .then(function(res) {
-          // console.log(res);
-          if (res.data.results) {
+      var term = q || this.searchTerm;
+      var query = "/api/query/" + term;
+      // if (q) {
+      // query = "/title/first/"+term
+      // }
+      this.$http.get(query).then(function(res) {
+        // console.log(res);
+        if (res.data.results) {
+          if (q) {
+            this.libraryItems = res.data.results.filter(function(item) {
+              console.log(item.title.charAt(0));
+              console.log(item.title.charAt(0) == q)
+              return (item.title.charAt(0).toUpperCase()===q.toUpperCase());
+            });
+            this.hasItems = this.libraryItems.length;
+          } else {
             this.hasItems = res.data.results.length;
             this.libraryItems = res.data.results;
-          } else {
-            this.hasItems = 0;
-            this.error = "There was an error with your request";
           }
-        });
+        } else {
+          this.hasItems = 0;
+          this.error = "There was an error with your request";
+        }
+      });
     },
     fetchItemByArtist: function(q = null) {
       // TODO FINISH

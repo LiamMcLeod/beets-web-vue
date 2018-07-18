@@ -2,6 +2,14 @@
 </style>
 <template>
   <aside id="a-to-z" class="p-top-8">
+    <div class="text-bold text-center p-top-8">
+      <!-- TODO -->
+      <a @click="libraryFetch(i)" href="#">*</a>
+    </div>
+    <!-- TODO -->
+    <div class="text-bold text-center p-top-8">
+      <a @click="libraryFetch(i)" href="#">#</a>
+    </div>
     <div v-for="(i, index) in alphanum" class="text-bold text-center p-top-8">
       <a @click="libraryFetch(i)" href="#">{{ i }}</a>
     </div>
@@ -22,8 +30,8 @@ export default {
     for (var i = 0; i <= 25; i++) {
       this.alphanum[i] = String.fromCharCode(i + 65);
     }
-    this.alphanum.unshift("#");
-    this.alphanum.unshift("*");
+    // this.alphanum.unshift("#");
+    // this.alphanum.unshift("*");
   },
   mounted: function() {},
   methods: {
