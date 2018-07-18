@@ -48,17 +48,35 @@ export default {
         }
       });
     },
-    searchItems: function() {
+    searchItems: function(q = null) {
       this.clearItems();
-      this.$http.get("/api/query/" + this.searchTerm).then(function(res) {
-        if (res.data.results) {
-          this.hasItems = res.data.results.length;
-          this.libraryItems = res.data.results;
-        } else {
-          this.hasItems = 0;
-          this.error = "There was an error with your request";
-        }
-      });
+      this.$http
+        .get("/api/query/" + (q == null ? this.searchTerm : q))
+        .then(function(res) {
+          // console.log(res);
+          if (res.data.results) {
+            this.hasItems = res.data.results.length;
+            this.libraryItems = res.data.results;
+          } else {
+            this.hasItems = 0;
+            this.error = "There was an error with your request";
+          }
+        });
+    },
+    fetchItemByArtist: function(q = null) {
+      this.clearItems();
+      this.$http
+        .get("/api/query/" + (q == null ? this.searchTerm : q))
+        .then(function(res) {
+          // console.log(res);
+          if (res.data.results) {
+            this.hasItems = res.data.results.length;
+            this.libraryItems = res.data.results;
+          } else {
+            this.hasItems = 0;
+            this.error = "There was an error with your request";
+          }
+        });
     },
     selectItem: function(e) {
       // TODO Double click doesnät work on Mozilla.
@@ -76,7 +94,7 @@ export default {
           if (!$("#search tr").hasClass("selected")) {
             $("td button").addClass("hidden");
           }
-          
+
           var parentEl = $(e.srcElement.parentElement);
           if (parentEl.is("table") || parentEl.is("tbody")) {
           } else {

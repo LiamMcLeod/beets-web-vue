@@ -67,6 +67,9 @@ Vue.component('now-playing', nowPlaying);
 var parentView = require('./components/ParentView');
 Vue.component('parent-view', parentView);
 
+var aToZ = require('./components/AtoZ');
+Vue.component('a-to-z', aToZ);
+
 
 const app = new Vue({
     el: '#app',

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
  * 1. Set default font family to sans-serif.
@@ -5818,7 +5817,7 @@ a.navbar-brand.mr-2:hover {
   clear: both;
 }
 
-ƒƒ #extra-detail dl dd {
+#extra-detail dl dd {
   margin-left: 10.5em;
 }
 
@@ -5948,6 +5947,15 @@ a.navbar-brand.mr-2:hover {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+#a-to-z {
+  color: #2b3046;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  bottom: 50px;
+  width: 18px;
 }
 
 /* Keep at bottom */
