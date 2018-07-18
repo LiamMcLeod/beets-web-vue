@@ -279,7 +279,6 @@ def item_unique_field_values(key):
         return flask.abort(404)
     return flask.jsonify(values=values)
 
-# Songs
 
 # Albums.
 

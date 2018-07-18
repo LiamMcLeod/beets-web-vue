@@ -29,7 +29,7 @@ export default {
   methods: {
     test: function(e) {},
     libraryFetch: function(q) {
-      this.$root.$refs.library.searchItems(q);
+      this.$root.$refs.parent.$refs.library.searchItems(q);
     }
   }
 };

@@ -83,11 +83,6 @@ const app = new Vue({
     computed: {},
     filters: {},
     mounted: function () {
-        // $("#player audio").bind("ended", {
-        //     app: this
-        // }, function (e) {
-        //     app.audioEnded();
-        // });
         var vue = this;
         $('#player audio').bind({
             loadedmetadata: function (e) {
