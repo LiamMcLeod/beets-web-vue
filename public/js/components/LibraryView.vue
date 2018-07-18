@@ -64,11 +64,12 @@ export default {
         });
     },
     fetchItemByArtist: function(q = null) {
+      // TODO FINISH
       this.clearItems();
       this.$http
-        .get("/api/query/" + (q == null ? this.searchTerm : q))
+        .get("/api/") //+ (q == null ? this.searchTerm : q))
         .then(function(res) {
-          // console.log(res);
+          console.log(res);
           if (res.data.results) {
             this.hasItems = res.data.results.length;
             this.libraryItems = res.data.results;

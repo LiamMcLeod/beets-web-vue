@@ -258,6 +258,25 @@ def item_file(item_id):
 def item_query(queries):
     return g.lib.items(queries)
 
+# Route for first letter of title
+#? First custom route, something might be off
+@app.route('/title/first/<string:letter>')
+def get_title_first(letter):
+    with g.lib.transaction() as tx:
+        rows = tx.query('SELECT {0} FROM "{1}" WHERE title LIKE "{2}%"'
+                        .format("*", "items", letter))
+
+    items=[]
+    for row in rows:
+        #* Build object for JSON
+        items.append([col for col in row])
+
+    for item in items:        
+        #* Run through and decode all byte strings
+        item[7]=item[7].decode('utf-8')
+    
+    return flask.jsonify({'results':items})
+
 
 @app.route('/api/path/<everything:path>')
 def item_at_path(path):
@@ -408,11 +427,11 @@ class WebPlugin(BeetsPlugin):
             app.config['ENV'] = 'development'
             app.config['DEBUG'] = True
             #!remove when done
+
             app.run(host=self.config['host'].as_str(),
                     port=self.config['port'].get(int),
                     threaded=True, 
-                    #!uncomment when done
-                    #debug=opts.debug,
+                    debug=opts.debug,
                     )
         cmd.func = func
         return [cmd]
