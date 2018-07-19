@@ -30,15 +30,11 @@ export default {
   },
   created: function() {
     if (!this.searchTerm) this.fetchItems();
-    // else this.searchItems();
-    //Todo something
   },
   mounted: function() {},
   methods: {
     fetchItems: function() {
       this.$http.get("/api/").then(function(res) {
-        //! remove in prod
-        // console.log(res.data);
         if (res.data.items) {
           this.hasItems = res.data.items.length;
           this.libraryItems = res.data.items;
@@ -52,17 +48,27 @@ export default {
       this.clearItems();
       var term = q || this.searchTerm;
       var query = "/api/query/" + term;
-      // if (q) {
-      // query = "/title/first/"+term
-      // }
+      if (q == 0) {
+        query = "/api/query/%20";
+      } else if (q) {
+        // TODO OTHER ACTION HERE
+        // query = "/title/first/" + term;
+      }
       this.$http.get(query).then(function(res) {
-        // console.log(res);
         if (res.data.results) {
-          if (q) {
+          if (q && !(q == "*" || q == "0")) {
+            //* CHECK START OF THE SONG FOR MATCHING CHAR
             this.libraryItems = res.data.results.filter(function(item) {
-              console.log(item.title.charAt(0));
-              console.log(item.title.charAt(0) == q)
-              return (item.title.charAt(0).toUpperCase()===q.toUpperCase());
+              return item.title.charAt(0).toUpperCase() === q.toUpperCase();
+            });
+            this.hasItems = this.libraryItems.length;
+          } else if (q == "*") {
+            //* Fetch All
+            this.fetchItems();
+          } else if (q === "0") {
+            //* CHECK START FOR ALL NUMBERS
+            this.libraryItems = res.data.results.filter(function(item) {
+              return item.title.charAt(0).match("([0-9])+");
             });
             this.hasItems = this.libraryItems.length;
           } else {

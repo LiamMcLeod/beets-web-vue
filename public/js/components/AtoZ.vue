@@ -3,12 +3,10 @@
 <template>
   <aside id="a-to-z" class="p-top-8">
     <div class="text-bold text-center p-top-8">
-      <!-- TODO -->
-      <a @click="libraryFetch(i)" href="#">*</a>
+      <a @click="libraryFetch('*')" href="#">*</a>
     </div>
-    <!-- TODO -->
     <div class="text-bold text-center p-top-8">
-      <a @click="libraryFetch(i)" href="#">#</a>
+      <a @click="libraryFetch('0')" href="#">#</a>
     </div>
     <div v-for="(i, index) in alphanum" class="text-bold text-center p-top-8">
       <a @click="libraryFetch(i)" href="#">{{ i }}</a>
